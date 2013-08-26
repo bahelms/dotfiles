@@ -1,5 +1,5 @@
 Dotfiles
 ----
 
-.vimrc
-.bashrc
+* .vimrc  
+* .bashrc
