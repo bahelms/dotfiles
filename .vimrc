@@ -18,6 +18,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
@@ -27,6 +28,7 @@ Bundle 'skalnik/vim-vroom'
 " end Vundle
 
 filetype plugin indent on     " required!
+filetype plugin on
 "
 " Brief help
 " :BundleList          - list configured bundles
