@@ -55,12 +55,7 @@ set number                " show line numbers
 " autocmd vimenter * NERDTree
 
 " Colorscheme
-if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-    colorscheme railscasts
-else
-    colorscheme default
-endif
+set t_Co=256
 colorscheme railscasts
 
 " Window navigation
