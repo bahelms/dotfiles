@@ -22,9 +22,9 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
+" Bundle 'thoughtbot/vim-rspec'
 " Bundle 'scrooloose/nerdcommenter'
 " Bundle 'johnallen3d/vim-colorschemes'
 " end Vundle
@@ -43,7 +43,7 @@ syntax enable
 autocmd FileType apache set commentstring=#\ %s
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " Uses spaces instead of tabs, Softtabs, 2 spaces
 set expandtab
