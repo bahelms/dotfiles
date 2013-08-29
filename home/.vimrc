@@ -1,5 +1,6 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
+filetype plugin indent on      " required!
+set noswapfile
 
 let mapleader=","
 set rtp+=~/.vim/bundle/vundle/
@@ -18,19 +19,16 @@ Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-commentary'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
+" Bundle 'scrooloose/nerdcommenter'
 " Bundle 'johnallen3d/vim-colorschemes'
 " end Vundle
 
-filetype plugin indent on     " required!
-filetype plugin on
-"
 " Brief help
 " :BundleList          - list configured bundles
 " :BundleInstall(!)    - install(update) bundles
@@ -44,16 +42,24 @@ syntax on
 syntax enable
 autocmd FileType apache set commentstring=#\ %s
 
-" Softtabs, 2 spaces
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+" Uses spaces instead of tabs, Softtabs, 2 spaces
+set expandtab
 set tabstop=2
 set shiftwidth=2
-set expandtab
 
 set splitbelow
 set splitright
 set pastetoggle=<leader>p
 set number                " show line numbers
 
+" Set ruby comiler
+autocmd FileType ruby compiler ruby
+nnoremap <leader>e :!ruby %:p<CR>
+
+" Start NERDTree on vim start
 " autocmd vimenter * NERDTree
 
 " Colorscheme
@@ -66,8 +72,20 @@ nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
+" Select all with ctrl-a
+map <C-A> ggVG
+
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
