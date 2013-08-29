@@ -18,7 +18,8 @@ Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-commentary'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
@@ -41,6 +42,7 @@ filetype plugin on
 
 syntax on
 syntax enable
+autocmd FileType apache set commentstring=#\ %s
 
 " Softtabs, 2 spaces
 set tabstop=2
