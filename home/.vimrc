@@ -1,8 +1,7 @@
 set nocompatible               " be iMproved
-filetype plugin indent on      " required!
+filetype off
 set noswapfile
 
-let mapleader=","
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -40,7 +39,10 @@ Bundle 'cakebaker/scss-syntax.vim'
 " NOTE: comments after Bundle command are not allowed..
 
 syntax on
+filetype plugin indent on      " required!
 syntax enable
+
+let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
 
 " Format the status line
