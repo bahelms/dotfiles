@@ -1,5 +1,0 @@
-Dotfiles
-----
-
-* .vimrc  
-* .bashrc
