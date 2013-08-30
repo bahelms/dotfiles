@@ -56,9 +56,15 @@ set splitright
 set pastetoggle=<leader>p
 set number                " show line numbers
 
-" Set ruby comiler
+" Easier shortcuts
+" Open file without retyping full path
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
+nnoremap <Leader>q :qa!<CR>
+nnoremap <Leader>x :xa<CR>
+
+" Set ruby compiler
 autocmd FileType ruby compiler ruby
-nnoremap <leader>e :!ruby %:p<CR>
+nnoremap <leader>f :!ruby %:p<CR>
 
 " Start NERDTree on vim start
 " autocmd vimenter * NERDTree
