@@ -24,6 +24,7 @@ Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
+Bundle 'cakebaker/scss-syntax.vim'
 " Bundle 'thoughtbot/vim-rspec'
 " Bundle 'scrooloose/nerdcommenter'
 " Bundle 'johnallen3d/vim-colorschemes'
@@ -65,6 +66,9 @@ nnoremap <leader>e :!ruby %:p<CR>
 " Colorscheme
 set t_Co=256
 colorscheme railscasts
+
+highlight ColorColumn ctermbg=8
+set colorcolumn=80        " show column 80
 
 " Window navigation
 nmap <C-J> <C-W><C-J>
