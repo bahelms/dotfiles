@@ -67,7 +67,7 @@ nnoremap <leader>e :!ruby %:p<CR>
 set t_Co=256
 colorscheme railscasts
 
-highlight ColorColumn ctermbg=8
+highlight ColorColumn ctermbg=233
 set colorcolumn=80        " show column 80
 
 " Window navigation
