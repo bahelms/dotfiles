@@ -1,0 +1,17 @@
+[user]
+	name = Jimbonk
+	email = jimbonkgit@gmail.com
+[alias]
+	st = status
+	co = checkout
+	lg = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	br = branch
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = true
+	excludesfile = /home/jimbonk/.gitignore
+[push]
+	default = simple
