@@ -84,6 +84,10 @@ nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
+" Window resizing
+nnoremap - <C-W>-
+nnoremap + <C-W>+
+
 " Select all with ctrl-a
 map <C-A> ggVG
 
