@@ -21,6 +21,8 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # enable color support of ls and also add handy aliases
@@ -41,3 +43,5 @@ alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout'  # Overwrites Go command (language)
+alias ls='ls -G' # Gives colored directory output
+

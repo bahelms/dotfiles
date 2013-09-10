@@ -47,6 +47,8 @@ syntax enable
 let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
 
+set noerrorbells
+
 " Format the status line
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
@@ -59,6 +61,7 @@ set splitbelow
 set splitright
 set pastetoggle=<leader>p
 set number                " show line numbers
+set laststatus=2          " always show status line
 
 " Easier shortcuts
 " Open file without retyping full path
@@ -92,6 +95,9 @@ nnoremap + <C-W>+
 
 " Select all with ctrl-a
 map <C-A> ggVG
+
+" Fast return
+nnoremap K i<CR><ESC>
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>

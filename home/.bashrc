@@ -128,7 +128,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # DevBox aliases
-export DEV_BOX=$HOME/work/technekes/devbox
+export DEV_BOX=$HOME/work/devbox
 
 alias vup="cd $DEV_BOX; vagrant up;"
 alias vhalt="cd $DEV_BOX; vagrant halt;"
@@ -147,3 +147,10 @@ function restart_app() {
 function bundle_app() {
   run_command_on_devbox "cd /var/apps/$1_app; bundle; restart_app $1"
 }
+
+# Mac Terminal colors
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# Adds color to Mac Terminal
+export PS1="\[\033[1;33m\]\t\[\033[0m\] \[\033[1;32m\]\u\[\033[0m\]:\[\033[1;32m\]\w\[\033[0m\]$ "
