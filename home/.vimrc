@@ -63,6 +63,10 @@ set pastetoggle=<leader>p
 set number                " show line numbers
 set laststatus=2          " always show status line
 
+" Highlight searching and cancel highlight
+set hlsearch
+nmap <leader>h :noh<CR> 
+
 " Easier shortcuts
 " Open file without retyping full path
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
