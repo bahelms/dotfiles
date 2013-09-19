@@ -103,6 +103,9 @@ map <C-A> ggVG
 " Fast return
 nnoremap K i<CR><ESC>
 
+" Yank whole line to paste inline
+nnoremap Y ^y$
+
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -117,3 +120,6 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" CoffeeScript 2 space indentation
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
