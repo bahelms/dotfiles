@@ -112,8 +112,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-alias android-connect="mtpfs -o allow_other /media/Nexus"
-alias android-disconnect="fusermount -u /media/Nexus"
 
 #### CUSTOM ADDONS BY ME
 ####
@@ -126,27 +124,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# DevBox aliases
-export DEV_BOX=$HOME/work/devbox
-
-alias vup="cd $DEV_BOX; vagrant up;"
-alias vhalt="cd $DEV_BOX; vagrant halt;"
-alias vssh="cd $DEV_BOX; vagrant ssh;"
-alias apps="cd $DEV_BOX/apps"
-alias gems="cd $DEV_BOX/gems"
-
-function run_command_on_devbox() {
-  ssh -p 2222 -i ~/.vagrant.d/insecure_private_key vagrant@localhost "source ~/.bash_profile; $1"
-}
-
-function restart_app() {
-  run_command_on_devbox "restart_app $1"
-}
-
-function bundle_app() {
-  run_command_on_devbox "cd /var/apps/$1_app; bundle; restart_app $1"
-}
 
 # Mac Terminal colors
 export CLICOLOR=1
