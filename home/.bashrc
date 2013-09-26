@@ -131,3 +131,10 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Adds color to Mac Terminal
 export PS1="\[\033[1;33m\]\t\[\033[0m\] \[\033[1;32m\]\u\[\033[0m\]:\[\033[1;32m\]\w\[\033[0m\]$ "
+
+# Devbox stuff
+export DEV_BOX=$HOME/work/devbox
+
+alias vup="cd $DEV_BOX;vagrant up;"
+alias vhalt="cd $DEV_BOX; vagrant halt;"
+alias vssh="cd $DEV_BOX; vagrant ssh;"

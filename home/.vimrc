@@ -67,6 +67,9 @@ set laststatus=2          " always show status line
 set hlsearch
 nmap <leader>h :noh<CR> 
 
+"No help
+nmap <F1> <ESC>
+
 " Easier shortcuts
 " Open file without retyping full path
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
