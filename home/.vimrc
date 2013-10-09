@@ -82,6 +82,7 @@ nnoremap <leader>f :!ruby %:p<CR>
 
 " Start NERDTree on vim start
 " autocmd vimenter * NERDTree
+let NERDTreeShowHidden = 1
 
 " Colorscheme
 set t_Co=256
