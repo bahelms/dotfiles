@@ -88,7 +88,7 @@ let NERDTreeShowHidden = 1
 set t_Co=256
 colorscheme railscasts
 
-highlight ColorColumn ctermbg=233
+highlight ColorColumn ctermbg=235
 set colorcolumn=80        " show column 80
 
 " Window navigation
