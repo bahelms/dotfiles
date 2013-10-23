@@ -26,9 +26,6 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
-" Bundle 'thoughtbot/vim-rspec'
-" Bundle 'scrooloose/nerdcommenter'
-" Bundle 'johnallen3d/vim-colorschemes'
 " end Vundle
 
 " Brief help
@@ -49,9 +46,6 @@ autocmd FileType apache set commentstring=#\ %s
 
 set noerrorbells
 
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
 " Uses spaces instead of tabs, Softtabs, 2 spaces
 set expandtab
 set tabstop=2
@@ -67,6 +61,30 @@ set laststatus=2          " always show status line
 set hlsearch
 nmap <leader>h :noh<CR> 
 
+
+" Set ruby compiler
+autocmd FileType ruby compiler ruby
+nnoremap <leader>f :!ruby %:p<CR>
+
+" NERDTree
+" autocmd vimenter * NERDTree  " Start NERDTree on vim start
+let NERDTreeShowHidden = 1
+
+" Colorscheme
+set t_Co=256
+colorscheme railscasts
+
+" Set 80 character line
+highlight ColorColumn ctermbg=235
+set colorcolumn=80        " show column 80
+
+" REMAPS
+" Window navigation
+nmap <C-J> <C-W><C-J>
+nmap <C-K> <C-W><C-K>
+nmap <C-H> <C-W><C-H>
+nmap <C-L> <C-W><C-L>
+
 "No help
 nmap <F1> <ESC>
 
@@ -75,27 +93,6 @@ nmap <F1> <ESC>
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
 nnoremap <Leader>q :qa!<CR>
 nnoremap <Leader>x :xa<CR>
-
-" Set ruby compiler
-autocmd FileType ruby compiler ruby
-nnoremap <leader>f :!ruby %:p<CR>
-
-" Start NERDTree on vim start
-" autocmd vimenter * NERDTree
-let NERDTreeShowHidden = 1
-
-" Colorscheme
-set t_Co=256
-colorscheme railscasts
-
-highlight ColorColumn ctermbg=235
-set colorcolumn=80        " show column 80
-
-" Window navigation
-nmap <C-J> <C-W><C-J>
-nmap <C-K> <C-W><C-K>
-nmap <C-H> <C-W><C-H>
-nmap <C-L> <C-W><C-L>
 
 " Window resizing
 nnoremap - <C-W>-
@@ -109,6 +106,8 @@ nnoremap K i<CR><ESC>
 
 " Yank whole line to paste inline
 nnoremap Y ^y$
+" Delete whole line to paste inline
+nnoremap D ^D
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
