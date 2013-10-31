@@ -49,9 +49,13 @@ set t_Co=256
 colorscheme railscasts
 
 " Show active window through bars
-highlight StatusLine   ctermfg=252 ctermbg=0
-highlight StatusLineNC ctermfg=239 ctermbg=15
-highlight VertSplit    ctermfg=239 ctermbg=0
+highlight StatusLine   ctermfg=253 ctermbg=0
+highlight StatusLineNC ctermfg=237 ctermbg=15
+highlight VertSplit    ctermfg=237 ctermbg=0
+
+" Highlight cursor lines
+set cursorline
+highlight CursorLine ctermbg=234
 
 set noerrorbells
 
