@@ -44,6 +44,15 @@ syntax enable
 let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
 
+" Colorscheme
+set t_Co=256
+colorscheme railscasts
+
+" Show active window through bars
+highlight StatusLine   ctermfg=252 ctermbg=0
+highlight StatusLineNC ctermfg=239 ctermbg=15
+highlight VertSplit    ctermfg=239 ctermbg=0
+
 set noerrorbells
 
 " Uses spaces instead of tabs, Softtabs, 2 spaces
@@ -61,7 +70,6 @@ set laststatus=2          " always show status line
 set hlsearch
 nmap <leader>h :noh<CR> 
 
-
 " Set ruby compiler
 autocmd FileType ruby compiler ruby
 nnoremap <leader>f :!ruby %:p<CR>
@@ -69,10 +77,6 @@ nnoremap <leader>f :!ruby %:p<CR>
 " NERDTree
 " autocmd vimenter * NERDTree  " Start NERDTree on vim start
 let NERDTreeShowHidden = 1
-
-" Colorscheme
-set t_Co=256
-colorscheme railscasts
 
 " Set 80 character line
 highlight ColorColumn ctermbg=235

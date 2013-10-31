@@ -135,6 +135,6 @@ export PS1="\[\033[1;33m\]\t\[\033[0m\] \[\033[1;32m\]\u\[\033[0m\]:\[\033[1;32m
 # Devbox stuff
 export DEV_BOX=$HOME/work/devbox
 
-alias vup="cd $DEV_BOX;vagrant up;"
+alias vup="cd $DEV_BOX;vagrant up --provision;"
 alias vhalt="cd $DEV_BOX; vagrant halt;"
 alias vssh="cd $DEV_BOX; vagrant ssh;"
