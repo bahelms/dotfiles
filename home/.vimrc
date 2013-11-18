@@ -26,6 +26,7 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
+Bundle 'kien/ctrlp.vim'
 " end Vundle
 
 " Brief help
