@@ -82,6 +82,7 @@ nnoremap <leader>f :!ruby %:p<CR>
 " NERDTree
 " autocmd vimenter * NERDTree  " Start NERDTree on vim start
 let NERDTreeShowHidden = 1
+let NERDTreeHighlightCursorline = 0
 
 " Set 80 character line
 highlight ColorColumn ctermbg=235
