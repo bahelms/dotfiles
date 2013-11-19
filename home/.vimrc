@@ -55,8 +55,8 @@ highlight StatusLineNC ctermfg=237 ctermbg=15
 highlight VertSplit    ctermfg=237 ctermbg=0
 
 " Highlight cursor lines
-set cursorline
-highlight CursorLine ctermbg=234
+" set cursorline
+" highlight CursorLine ctermbg=234
 
 set noerrorbells
 
