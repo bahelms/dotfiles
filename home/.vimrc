@@ -137,3 +137,8 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 set t_ti= t_te=
+
+" Speedups
+
+let html_no_rendering=1   " Don't render HTML in vim
+set lazyredraw
