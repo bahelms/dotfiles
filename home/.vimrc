@@ -27,6 +27,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'kien/ctrlp.vim'
+Bundle 'groenewege/vim-less'
 " end Vundle
 
 " Brief help
