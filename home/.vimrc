@@ -16,6 +16,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
@@ -24,7 +25,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
-" Bundle 'tsaleh/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
@@ -42,8 +42,8 @@ Bundle 'thoughtbot/vim-rspec'
 " NOTE: comments after Bundle command are not allowed..
 
 syntax on
-filetype plugin indent on      " required!
 syntax enable
+filetype plugin indent on      " required!
 
 let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
@@ -111,19 +111,22 @@ nnoremap <Leader>g "0p
 vnoremap <Leader>g "0p
 
 " Window resizing
-nnoremap - <C-W>-
-nnoremap + <C-W>+
+" nnoremap - <C-W>-
+" nnoremap + <C-W>+
 
 " Select all with ctrl-a
-map <C-A> ggVG
+nnoremap <D-a> <C-a>
+nnoremap <C-a> ggVG
 
 " Fast return
 nnoremap K i<CR><ESC>
 
 " Yank whole line to paste inline
-nnoremap Y ^y$
+nmap - ^y$
+vmap = d"0p
+nmap = "0p
 " Delete whole line to paste inline
-nnoremap D ^D
+nnoremap D "0^D
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
@@ -147,7 +150,6 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 set t_ti= t_te=
 
 " Speedups
-
 let html_no_rendering=1   " Don't render HTML in vim
 set lazyredraw
 
@@ -167,4 +169,5 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
 
