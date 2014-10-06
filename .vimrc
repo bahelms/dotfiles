@@ -9,26 +9,27 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
-" Bundle 'skalnik/vim-vroom'
-Bundle 'thoughtbot/vim-rspec'
+Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
+Bundle 'thoughtbot/vim-rspec'
 " end Vundle
 
 " Brief help
@@ -41,8 +42,8 @@ Bundle 'juvenn/mustache.vim'
 " NOTE: comments after Bundle command are not allowed..
 
 syntax on
-filetype plugin indent on      " required!
 syntax enable
+filetype plugin indent on      " required!
 
 let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
@@ -50,9 +51,10 @@ autocmd FileType apache set commentstring=#\ %s
 " Colorscheme
 set t_Co=256
 colorscheme railscasts
+" colorscheme tomorrow_night
 
 " Show active window through bars
-highlight StatusLine   ctermfg=253 ctermbg=0
+highlight StatusLine   ctermfg=253 ctermbg=232
 highlight StatusLineNC ctermfg=237 ctermbg=15
 highlight VertSplit    ctermfg=237 ctermbg=0
 
@@ -109,19 +111,22 @@ nnoremap <Leader>g "0p
 vnoremap <Leader>g "0p
 
 " Window resizing
-nnoremap - <C-W>-
-nnoremap + <C-W>+
+" nnoremap - <C-W>-
+" nnoremap + <C-W>+
 
 " Select all with ctrl-a
-map <C-A> ggVG
+nnoremap <D-a> <C-a>
+nnoremap <C-a> ggVG
 
 " Fast return
 nnoremap K i<CR><ESC>
 
 " Yank whole line to paste inline
-nnoremap Y ^y$
+nmap - ^y$
+vmap = d"0p
+nmap = "0p
 " Delete whole line to paste inline
-nnoremap D ^D
+nnoremap D "0^D
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
@@ -137,7 +142,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
-autocmd BufWrite *.rb :call DeleteTrailingWS()
+autocmd BufWritePre *.rb :call DeleteTrailingWS()
 
 " CoffeeScript 2 space indentation
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
@@ -145,12 +150,24 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 set t_ti= t_te=
 
 " Speedups
-
 let html_no_rendering=1   " Don't render HTML in vim
 set lazyredraw
 
-" RSpec.vim mappings
+
+" Tests in Vim
+"
+" Test in file with Spring
+nmap <leader>r :call vroom#RunTestFile({'runner':'bin/rspec %'})<CR>
+"
+" Send test to Spin server
+nmap <leader>s :!spin push % <CR><CR>
+"
+" Run rspec normally in Vim with vim-rspec
+let g:rspec_command = "!clear && echo bundle exec rspec {spec} && bundle exec rspec {spec}"
+let g:rspec_runner = "ox_x_iterm"
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+
