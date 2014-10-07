@@ -121,12 +121,17 @@ nnoremap <C-a> ggVG
 " Fast return
 nnoremap K i<CR><ESC>
 
-" Yank whole line to paste inline
+
+" Yank/delete remaps
+" Yank line into register "0 and ""
 nmap - ^y$
-vmap = d"0p
-nmap = "0p
-" Delete whole line to paste inline
-nnoremap D "0^D
+" Paste yank
+map = "0p
+" Delete line into register ""
+nmap _ ^"1D
+" Paste delete
+map + "1p
+
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
@@ -169,5 +174,4 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
 
