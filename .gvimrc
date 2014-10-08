@@ -63,6 +63,7 @@ highlight VertSplit    ctermfg=237 ctermbg=0
 " highlight CursorLine ctermbg=234
 
 set noerrorbells
+autocmd GUIEnter * set vb t_vb=
 
 " Uses spaces instead of tabs, Softtabs, 2 spaces
 set expandtab
