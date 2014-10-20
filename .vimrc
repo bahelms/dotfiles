@@ -124,11 +124,11 @@ nnoremap K i<CR><ESC>
 
 " Yank/delete remaps
 " Yank line into register "0 and ""
-nmap - ^y$
+map - ^y$
 " Paste yank
 map = "0p
 " Delete line into register ""
-nmap _ ^"1D
+map _ ^"1D
 " Paste delete
 map + "1p
 
