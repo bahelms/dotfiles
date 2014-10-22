@@ -116,6 +116,9 @@ fi
 #### CUSTOM ADDONS BY ME
 ####
 
+# Adds auto completion to git commands
+test -f ~/.git-completion.bash && . $_
+
 # Ask permission before deleting
 alias rm="rm -i"
 #alias mv="mv -i"
