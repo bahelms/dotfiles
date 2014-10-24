@@ -79,9 +79,10 @@ set laststatus=2          " always show status line
 set hlsearch
 nmap <leader>h :noh<CR> 
 
-" Set ruby compiler
-autocmd FileType ruby compiler ruby
-nnoremap <leader>f :!ruby %:p<CR>
+" ctrlp shortcuts
+nmap <leader>f <C-P>
+nmap <leader>v <C-V>
+nmap <leader>s <C-X>
 
 " NERDTree
 " autocmd vimenter * NERDTree  " Start NERDTree on vim start
@@ -124,11 +125,13 @@ nnoremap K i<CR><ESC>
 
 " Yank/delete remaps
 " Yank line into register "0 and ""
-map - ^y$
+nmap - ^y$
+vmap - y
 " Paste yank
 map = "0p
 " Delete line into register ""
-map _ ^"1D
+nmap _ ^"1D
+vmap _ "1D
 " Paste delete
 map + "1p
 
