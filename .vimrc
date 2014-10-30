@@ -25,11 +25,11 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'jgdavey/vim-blockle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'AndrewRadev/splitjoin.vim'
 " end Vundle
 
 " Brief help
@@ -121,6 +121,10 @@ nnoremap <C-a> ggVG
 
 " Fast return
 nnoremap K i<CR><ESC>
+
+" split/join command
+nnoremap <Leader>s gS
+nnoremap <Leader>j ^gJ
 
 
 " Yank/delete remaps
