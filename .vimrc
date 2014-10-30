@@ -122,10 +122,6 @@ nnoremap <C-a> ggVG
 " Fast return
 nnoremap K i<CR><ESC>
 
-" split/join command
-nnoremap <Leader>s gS
-nnoremap <Leader>j ^gJ
-
 
 " Yank/delete remaps
 " Yank line into register "0 and ""
