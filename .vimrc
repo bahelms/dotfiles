@@ -30,6 +30,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'heartsentwined/vim-emblem'
 " end Vundle
 
 " Brief help
@@ -149,9 +150,8 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-autocmd BufWritePre *.rb :call DeleteTrailingWS()
+" autocmd BufWrite *.coffee :call DeleteTrailingWS()
+" autocmd BufWritePre *.rb :call DeleteTrailingWS()
 
 " CoffeeScript 2 space indentation
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
