@@ -203,3 +203,6 @@ for cmd in $bundle_commands
 do
     alias $cmd="run_bundler_cmd $cmd"
 done
+
+# Custom Aliases
+alias ls='ls -al'
