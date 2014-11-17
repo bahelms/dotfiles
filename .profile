@@ -46,5 +46,4 @@ alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout'  # Overwrites Go command (language)
-alias ls='ls -G' # Gives colored directory output
 source /home/vagrant/.rbenvrc
