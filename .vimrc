@@ -21,7 +21,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
 Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
@@ -31,6 +31,7 @@ Bundle 'juvenn/mustache.vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'heartsentwined/vim-emblem'
+Bundle 'mustache/vim-mustache-handlebars'
 " end Vundle
 
 " Brief help
