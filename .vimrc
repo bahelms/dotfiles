@@ -47,11 +47,15 @@ syntax on
 syntax enable
 filetype plugin indent on      " required!
 
-nnoremap m ,
+" Remap inline find commands
+nnoremap M ,
+nnoremap m ;
+vnoremap M ,
+vnoremap m ;
+
+" Remap : command
 nnoremap ; :
-nnoremap ;; ;
 vnoremap ; :
-vnoremap ;; ;
 
 let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
