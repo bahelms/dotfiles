@@ -47,6 +47,11 @@ syntax enable
 filetype plugin indent on      " required!
 
 nnoremap m ,
+nnoremap ; :
+nnoremap ;; ;
+vnoremap ; :
+vnoremap ;; ;
+
 let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
 
