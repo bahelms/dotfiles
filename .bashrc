@@ -138,7 +138,7 @@ alias vhalt="cd $DEV_BOX; vagrant halt;"
 alias vssh="cd $DEV_BOX; vagrant ssh;"
 
 # Aliases
-alias rspec="bin/rspec"
+alias brspec="bin/rspec"
 
 # Functions
 function tab () {
