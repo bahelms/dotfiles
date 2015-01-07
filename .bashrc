@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -137,33 +133,14 @@ export PS1="\[\033[1;33m\]\T\[\033[0m\] \[\033[1;32m\]\u\[\033[0m\]:\[\033[1;32m
 
 # Devbox stuff
 export DEV_BOX=$HOME/work/devbox
-
 alias vup="cd $DEV_BOX;vagrant up --provision;"
 alias vhalt="cd $DEV_BOX; vagrant halt;"
 alias vssh="cd $DEV_BOX; vagrant ssh;"
 
+# Aliases
+alias rspec="bin/rspec"
+
 # Functions
-
-
-#!/bin/bash
-#
-# Open new Terminal tabs from the command line
-#
-# Author: Justin Hileman (http://justinhileman.com)
-#
-# Installation:
-#     Add the following function to your `.bashrc` or `.bash_profile`,
-#     or save it somewhere (e.g. `~/.tab.bash`) and source it in `.bashrc`
-#
-# Usage:
-#     tab                   Opens the current directory in a new tab
-#     tab [PATH]            Open PATH in a new tab
-#     tab [CMD]             Open a new tab and execute CMD
-#     tab [PATH] [CMD] ...  You can prob'ly guess
-
-# Only for teh Mac users
-# [ `uname -s` != "Darwin" ] && return
-
 function tab () {
     local cmd=""
     local cdto="$PWD"
