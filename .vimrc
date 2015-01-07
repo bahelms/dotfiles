@@ -32,6 +32,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'heartsentwined/vim-emblem'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'elixir-lang/vim-elixir'
 " end Vundle
 
 " Brief help
