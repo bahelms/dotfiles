@@ -139,6 +139,8 @@ alias vssh="cd $DEV_BOX; vagrant ssh;"
 
 # Aliases
 alias brspec="bin/rspec"
+alias brake="bin/rake"
+alias brails="bin/rails"
 
 # Functions
 function tab () {
