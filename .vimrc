@@ -176,8 +176,8 @@ set lazyredraw
 
 " Tests in Vim
 "
-" Test in file with Spring
-nmap <leader>r :call vroom#RunTestFile({'runner':'bin/rspec %'})<CR>
+" Test in file without spring
+nmap <leader>r :!rspec =expand('%:p')
 "
 " Send test to Spin server
 nmap <leader>s :!spin push % <CR><CR>
