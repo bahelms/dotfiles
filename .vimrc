@@ -183,7 +183,7 @@ nmap <leader>r :!rspec =expand('%:p')
 nmap <leader>s :!spin push % <CR><CR>
 "
 " Run rspec normally in Vim with vim-rspec
-let g:rspec_command = "!clear && echo bundle exec rspec {spec} && bundle exec rspec {spec}"
+let g:rspec_command = "!clear && echo bin/rspec {spec} && bin/rspec {spec}"
 let g:rspec_runner = "ox_x_iterm"
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
