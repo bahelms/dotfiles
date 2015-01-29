@@ -123,6 +123,7 @@ nnoremap <Leader>q :qa!<CR>
 nnoremap <Leader>x :xa<CR>
 nnoremap <Leader>g "0p
 vnoremap <Leader>g "0p
+nnoremap <Leader>a :wa<CR>
 
 " Window resizing
 " nnoremap - <C-W>-
@@ -188,5 +189,5 @@ let g:rspec_runner = "ox_x_iterm"
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
 
