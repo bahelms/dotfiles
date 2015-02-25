@@ -21,7 +21,6 @@ Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
 Bundle 'ervandew/supertab'
-" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
@@ -33,6 +32,7 @@ Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'heartsentwined/vim-emblem'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'SirVer/ultisnips'
 " end Vundle
 
 " Brief help
@@ -92,10 +92,9 @@ set laststatus=2          " always show status line
 set hlsearch
 nmap <leader>h :noh<CR> 
 
-" ctrlp shortcuts
-nmap <leader>f <C-P>
-nmap <leader>v <C-V>
-nmap <leader>s <C-X>
+" Saving/restoring sessions
+noremap <F2> :mksession! ~/.vim_session<CR>
+noremap <F3> :source ~/.vim_session<CR>
 
 " NERDTree
 " autocmd vimenter * NERDTree  " Start NERDTree on vim start
@@ -123,7 +122,7 @@ nnoremap <Leader>q :qa!<CR>
 nnoremap <Leader>x :xa<CR>
 nnoremap <Leader>g "0p
 vnoremap <Leader>g "0p
-nnoremap <Leader>a :wa<CR>
+nmap <Leader>a <F2>:wa<CR>
 
 " Window resizing
 " nnoremap - <C-W>-
@@ -190,4 +189,12 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
+
+" UltiSnips config
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
