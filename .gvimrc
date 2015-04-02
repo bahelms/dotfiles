@@ -29,6 +29,7 @@ Bundle 'jgdavey/vim-blockle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
+Bundle 'SirVer/ultisnips'
 " end Vundle
 
 " Brief help
