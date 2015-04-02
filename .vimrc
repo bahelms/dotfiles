@@ -53,6 +53,7 @@ nnoremap M ,
 nnoremap m ;
 vnoremap M ,
 vnoremap m ;
+nnoremap z m
 
 " Remap : command
 nnoremap ; :
