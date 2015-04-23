@@ -1,3 +1,8 @@
+if [ -r $HOME/.custom_env_vars ];
+then
+  source $HOME/.custom_env_vars
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -81,7 +86,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ls='ls -AlF'
+alias ls='ls -AlFh'
 alias la='ls -A'
 alias l='ls -CF'
 

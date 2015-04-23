@@ -33,6 +33,8 @@ Bundle 'heartsentwined/vim-emblem'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'SirVer/ultisnips'
+Bundle 'dockyard/vim-easydir'
+Bundle 'rorymckinley/vim-rubyhash'
 " end Vundle
 
 " Brief help
