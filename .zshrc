@@ -59,6 +59,9 @@ export PATH="/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.r
 
 source $ZSH/oh-my-zsh.sh
 
+preexec() { print "" } # runs before command is executed
+# precmd() { print "" }  # runs before prompt is displayed
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
