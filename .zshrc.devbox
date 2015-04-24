@@ -84,7 +84,7 @@ preexec() { print "" } # runs before command is executed
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias ls.="ls -Alfh"
+alias ls.="ls -alFh"
 
 # Devbox stuff
 export DEV_BOX=$HOME/work/devbox
