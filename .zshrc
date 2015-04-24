@@ -86,6 +86,9 @@ preexec() { print "" } # runs before command is executed
 # Aliases
 alias ls.="ls -Alfh"
 
+# Ask permission before deleting
+alias rm="rm -i"
+
 # Devbox stuff
 export DEV_BOX=$HOME/work/devbox
 alias vup="cd $DEV_BOX;vagrant up --provision;"
