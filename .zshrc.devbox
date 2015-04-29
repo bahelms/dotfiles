@@ -85,6 +85,7 @@ preexec() { print "" } # runs before command is executed
 #
 # Aliases
 alias ls.="ls -alFh"
+alias rake="noglob bundle exec rake"
 
 # Devbox stuff
 export DEV_BOX=$HOME/work/devbox
