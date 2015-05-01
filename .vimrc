@@ -61,7 +61,7 @@ nnoremap z m
 nnoremap ; :
 vnoremap ; :
 
-let mapleader=" "
+let mapleader=","
 autocmd FileType apache set commentstring=#\ %s
 
 " Colorscheme
