@@ -188,3 +188,6 @@ do
     alias $cmd="run_bundler_cmd $cmd"
 done
 
+
+# added by travis gem
+[ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh

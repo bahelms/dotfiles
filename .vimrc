@@ -49,6 +49,7 @@ Bundle 'rorymckinley/vim-rubyhash'
 syntax on
 syntax enable
 filetype plugin indent on      " required!
+set shell=bash
 
 " Remap inline find commands
 nnoremap M ,

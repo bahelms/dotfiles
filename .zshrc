@@ -55,7 +55,7 @@ plugins=(git bundler rails)
 # User configuration
 
 # export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
+export PATH="/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -95,4 +95,11 @@ export DEV_BOX=$HOME/work/devbox
 alias vup="cd $DEV_BOX;vagrant up --provision;"
 alias vhalt="cd $DEV_BOX; vagrant halt;"
 alias vssh="cd $DEV_BOX; vagrant ssh;"
+
+
+# added by travis gem
+[ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
+
+# For docker
+$(boot2docker shellinit)
 
