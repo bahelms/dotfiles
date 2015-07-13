@@ -49,6 +49,7 @@ syntax on
 syntax enable
 filetype plugin indent on      " required!
 set backspace=0
+set shell=bash
 
 " Remap inline find commands
 nnoremap z m
