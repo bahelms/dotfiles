@@ -34,7 +34,6 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'SirVer/ultisnips'
 Bundle 'dockyard/vim-easydir'
-Bundle 'rorymckinley/vim-rubyhash'
 " end Vundle
 
 " Brief help
@@ -49,13 +48,14 @@ Bundle 'rorymckinley/vim-rubyhash'
 syntax on
 syntax enable
 filetype plugin indent on      " required!
+set backspace=0
 
 " Remap inline find commands
+nnoremap z m
 nnoremap M ,
 nnoremap m ;
 vnoremap M ,
 vnoremap m ;
-nnoremap z m
 
 " Remap : command
 nnoremap ; :
