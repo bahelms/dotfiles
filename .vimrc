@@ -183,9 +183,9 @@ set lazyredraw
 " Test in file with spring
 " nmap <leader>r :!clear && echo bin/rspec && bin/rspec <C-R>=expand('%:p')<CR><CR>
 "
-" Send test to Spin server
-nmap <leader>s :!spin push % <CR><CR>
-"
+" Run mix test for current file 
+nmap <leader>s :!mix test <C-R>=expand('%:p')<CR><CR>
+
 " Run rspec normally in Vim with vim-rspec
 let g:rspec_command = "!clear && echo bundle exec rspec {spec} && bundle exec rspec {spec}"
 let g:rspec_runner = "ox_x_iterm"
