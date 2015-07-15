@@ -161,12 +161,17 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+  " Preparation - save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up - restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunc
-" autocmd BufWrite *.coffee :call DeleteTrailingWS()
-" autocmd BufWritePre *.rb :call DeleteTrailingWS()
+autocmd BufWritePre *.rb,*.js,*.coffee :call DeleteTrailingWS()
 
 " CoffeeScript 2 space indentation
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
