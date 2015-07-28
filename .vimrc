@@ -52,6 +52,8 @@ filetype plugin indent on      " required!
 set backspace=0
 set shell=bash
 
+let ruby_space_errors = 1
+
 " Remap inline find commands
 nnoremap z m
 nnoremap M ,
