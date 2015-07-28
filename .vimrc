@@ -34,6 +34,7 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'SirVer/ultisnips'
 Bundle 'dockyard/vim-easydir'
+Bundle 'mtscout6/vim-cjsx'
 " end Vundle
 
 " Brief help
