@@ -174,7 +174,7 @@ func! DeleteTrailingWS()
   let @/=_s
   call cursor(l, c)
 endfunc
-autocmd BufWritePre *.rb,*.js,*.coffee :call DeleteTrailingWS()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx :call DeleteTrailingWS()
 map <Leader>c :call DeleteTrailingWS()<CR><Leader>a
 
 " CoffeeScript 2 space indentation
