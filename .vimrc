@@ -35,6 +35,9 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'SirVer/ultisnips'
 Bundle 'dockyard/vim-easydir'
 Bundle 'mtscout6/vim-cjsx'
+Bundle 'lambdatoast/elm.vim'
+Bundle 'StanAngeloff/php.vim'
+Bundle '2072/PHP-Indenting-for-VIm'
 " end Vundle
 
 " Brief help
@@ -174,7 +177,7 @@ func! DeleteTrailingWS()
   let @/=_s
   call cursor(l, c)
 endfunc
-autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx :call DeleteTrailingWS()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs :call DeleteTrailingWS()
 map <Leader>c :call DeleteTrailingWS()<CR><Leader>a
 
 " CoffeeScript 2 space indentation

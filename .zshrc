@@ -101,5 +101,5 @@ alias vssh="cd $DEV_BOX; vagrant ssh;"
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
 
 # For docker
-$(boot2docker shellinit)
+eval "$(docker-machine env default)"
 
