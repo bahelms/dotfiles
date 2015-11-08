@@ -38,6 +38,7 @@ Bundle 'mtscout6/vim-cjsx'
 Bundle 'lambdatoast/elm.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
+Bundle 'jeroenbourgois/vim-actionscript'
 " end Vundle
 
 " Brief help
