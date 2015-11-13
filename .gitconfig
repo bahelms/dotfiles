@@ -15,3 +15,5 @@
 	excludesfile = /home/jimbonk/.gitignore
 [push]
 	default = simple
+[merge]
+  ff = no
