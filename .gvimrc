@@ -51,7 +51,7 @@ autocmd FileType apache set commentstring=#\ %s
 " Colorscheme
 set t_Co=256
 colorscheme railscasts
-set gfn=Menlo:h12
+set gfn=Menlo:h14
 hi Normal guibg=#1b1b1b
 
 " Show active window through bars
