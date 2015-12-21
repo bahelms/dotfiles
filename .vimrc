@@ -96,7 +96,7 @@ set shiftwidth=2
 
 set splitbelow
 set splitright
-set pastetoggle=<leader>p
+set pastetoggle=<leader>[
 set number                " show line numbers
 set laststatus=2          " always show status line
 
