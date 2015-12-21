@@ -84,7 +84,7 @@ preexec() { print "" } # runs before command is executed
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias ls.="ls -alFh"
+alias ls.="ls -alFh --group-directories-first"
 alias rake="noglob bundle exec rake"
 
 # Devbox stuff
