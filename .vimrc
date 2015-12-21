@@ -39,6 +39,7 @@ Bundle 'lambdatoast/elm.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'jeroenbourgois/vim-actionscript'
+Bundle 'mrtazz/simplenote.vim'
 " end Vundle
 
 " Brief help
@@ -216,4 +217,13 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 " Add search path
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/dotfiles/UltiSnips"]
+
+" Simplenote 
+source ~/.simplenoterc
+nmap <Leader>sl :Simplenote -l<CR>
+nmap <Leader>sn :Simplenote -n<CR>
+nmap <Leader>su :Simplenote -u<CR>
+nmap <Leader>sd :Simplenote -d<CR>
+nmap <Leader>sD :Simplenote -D<CR>
+
 
