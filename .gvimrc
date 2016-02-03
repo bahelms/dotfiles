@@ -128,8 +128,6 @@ nnoremap K i<CR><ESC>
 
 " Yank whole line to paste inline
 nnoremap Y ^y$
-" Delete whole line to paste inline
-nnoremap D ^D
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
