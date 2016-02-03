@@ -50,12 +50,16 @@ ZSH_THEME="jimbonk"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler rails)
+plugins=(git bundler rails docker-compose)
 
 # User configuration
 
+# Chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
 # export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-export PATH="/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:$PATH"
+# export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -86,9 +90,12 @@ preexec() { print "" } # runs before command is executed
 #
 # Aliases
 alias ls.="ls -Alfh"
+alias drc="docker ps -aqf status=exited | xargs docker rm"
+alias dri="docker images -qf dangling=true | xargs docker rmi"
+alias dcp="docker-compose"
 
 # Ask permission before deleting
-alias rm="rm -i"
+# alias rm="rm -i"
 
 # Devbox stuff
 export DEV_BOX=$HOME/work/devbox
@@ -96,10 +103,11 @@ alias vup="cd $DEV_BOX;vagrant up --provision;"
 alias vhalt="cd $DEV_BOX; vagrant halt;"
 alias vssh="cd $DEV_BOX; vagrant ssh;"
 
-
 # added by travis gem
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
 
 # For docker
 eval "$(docker-machine env default)"
 
+# Default Ruby
+chruby 2.3.0

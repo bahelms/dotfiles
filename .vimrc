@@ -36,10 +36,10 @@ Bundle 'SirVer/ultisnips'
 Bundle 'dockyard/vim-easydir'
 Bundle 'mtscout6/vim-cjsx'
 Bundle 'lambdatoast/elm.vim'
-Bundle 'StanAngeloff/php.vim'
-Bundle '2072/PHP-Indenting-for-VIm'
-Bundle 'jeroenbourgois/vim-actionscript'
 Bundle 'mrtazz/simplenote.vim'
+Bundle 'wesQ3/vim-windowswap'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'scrooloose/syntastic'
 " end Vundle
 
 " Brief help
