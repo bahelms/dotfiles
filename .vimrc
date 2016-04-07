@@ -5,7 +5,7 @@ set noswapfile
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-" let Vundle manage Vundle required! 
+" let Vundle manage Vundle required!
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
@@ -26,11 +26,8 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
-Bundle 'juvenn/mustache.vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'heartsentwined/vim-emblem'
-Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'SirVer/ultisnips'
 Bundle 'dockyard/vim-easydir'
@@ -102,7 +99,7 @@ set laststatus=2          " always show status line
 
 " Highlight searching and cancel highlight
 set hlsearch
-nmap <leader>h :noh<CR> 
+nmap <leader>h :noh<CR>
 
 " Saving/restoring sessions
 noremap <F2> :mksession! ~/.vim_session<CR>
@@ -132,8 +129,6 @@ nmap <F1> <ESC>
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
 nnoremap <Leader>q :qa!<CR>
 nnoremap <Leader>x :xa<CR>
-nnoremap <Leader>g "0p
-vnoremap <Leader>g "0p
 nmap <Leader>a <F2>:wa<CR>
 
 " Window resizing
@@ -141,8 +136,8 @@ nmap <Leader>a <F2>:wa<CR>
 " nnoremap + <C-W>+
 
 " Select all with ctrl-a
-nnoremap <D-a> <C-a>
-nnoremap <C-a> ggVG
+" nnoremap <D-a> <C-a>
+" nnoremap <C-a> ggVG
 
 " Fast return
 nnoremap K i<CR><ESC>
@@ -159,6 +154,9 @@ nmap _ ^"1D
 vmap _ "1D
 " Paste delete
 map + "1p
+
+" Visual yank to clipboard
+vnoremap <Leader>c "+y
 
 
 " No arrow keys for you
@@ -180,7 +178,7 @@ func! DeleteTrailingWS()
   call cursor(l, c)
 endfunc
 autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs :call DeleteTrailingWS()
-map <Leader>c :call DeleteTrailingWS()<CR><Leader>a
+map <Leader>f :call DeleteTrailingWS()<CR><Leader>a
 
 " CoffeeScript 2 space indentation
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
@@ -197,7 +195,7 @@ set lazyredraw
 " Test in file with spring
 " nmap <leader>r :!clear && echo bin/rspec && bin/rspec <C-R>=expand('%:p')<CR><CR>
 "
-" Run mix test for current file 
+" Run mix test for current file
 nmap <leader>s :!mix test <C-R>=expand('%:p')<CR><CR>
 
 " Run rspec normally in Vim with vim-rspec
@@ -218,7 +216,7 @@ let g:UltiSnipsEditSplit="vertical"
 " Add search path
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/dotfiles/UltiSnips"]
 
-" Simplenote 
+" Simplenote
 source ~/.simplenoterc
 nmap <Leader>sl :Simplenote -l<CR>
 nmap <Leader>sn :Simplenote -n<CR>
@@ -226,4 +224,6 @@ nmap <Leader>su :Simplenote -u<CR>
 nmap <Leader>sd :Simplenote -d<CR>
 nmap <Leader>sD :Simplenote -D<CR>
 
+" Markdown preview
+let vim_markdown_preview_hotkey='<C-m>'
 

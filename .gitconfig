@@ -1,6 +1,6 @@
 [user]
 	name = bahelms
-	email = barrett.helms@technekes.com
+	email = jimbonkgit@gmail.com
 [alias]
 	st = status
 	co = checkout
@@ -15,5 +15,3 @@
 	excludesfile = /home/jimbonk/.gitignore
 [push]
 	default = simple
-[merge]
-  ff = no
