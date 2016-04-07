@@ -58,8 +58,9 @@ plugins=(git bundler rails docker-compose)
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
+
 # export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-# export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -106,8 +107,24 @@ alias vssh="cd $DEV_BOX; vagrant ssh;"
 # added by travis gem
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
 
-# For docker
-eval "$(docker-machine env default)"
+# For dinghy on docker-machine
+eval $(dinghy shellinit)
+# eval "$(docker-machine env default)"
 
 # Default Ruby
 chruby 2.3.0
+
+# Hub
+# alias git=hub
+
+# Nib
+alias nib='
+  docker run \
+    -it \
+    --rm \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    -v $HOME/.docker/config.json:/root/.docker/config.json:ro \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -e "DOCKER_HOST_URL=$DOCKER_HOST" \
+    technekes/nib'
