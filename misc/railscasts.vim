@@ -52,7 +52,7 @@ highlight CursorLine                guibg=#000000 ctermbg=233 cterm=NONE
 " highlight StatusLineN               ctermfg=15 ctermbg=236 
 highlight VertSplit                 ctermfg=15 ctermbg=236  
 
-highlight Comment                   guifg=#BC9458 ctermfg=180 gui=italic
+highlight Comment                   guifg=#BC9458 ctermfg=241 gui=italic
 highlight Constant                  guifg=#6D9CBE ctermfg=73
 highlight Define                    guifg=#CC7833 ctermfg=173
 highlight Error                     guifg=#FFC66D ctermfg=221 guibg=#990000 ctermbg=88
