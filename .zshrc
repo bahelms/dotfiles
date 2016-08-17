@@ -54,13 +54,8 @@ plugins=(git bundler rails docker-compose)
 
 # User configuration
 
-# Chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-
 # export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/barretthelms/apache-storm-1.0.1/bin:/Users/barretthelms/apache-maven-3.3.9/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/barretthelms/apache-storm-1.0.1/bin:/Users/barretthelms/apache-maven-3.3.9/bin:/Users/barretthelms/elixir/noaa_weather"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -111,9 +106,6 @@ alias vssh="cd $DEV_BOX; vagrant ssh;"
 eval $(dinghy shellinit)
 # eval "$(docker-machine env default)"
 
-# Default Ruby
-chruby 2.3.0
-
 # Hub
 # alias git=hub
 
@@ -128,3 +120,8 @@ alias nib='
     -v /var/run/docker.sock:/var/run/docker.sock \
     -e "DOCKER_HOST_URL=$DOCKER_HOST" \
     technekes/nib'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Python3 -- starts a python 3 repl
+alias dpy="docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3-alpine"
