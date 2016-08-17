@@ -38,6 +38,7 @@ Bundle 'mrtazz/simplenote.vim'
 Bundle 'wesQ3/vim-windowswap'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'scrooloose/syntastic'
+Bundle 'derekwyatt/vim-scala'
 " end Vundle
 
 " Brief help
@@ -74,7 +75,6 @@ autocmd FileType apache set commentstring=#\ %s
 " Colorscheme
 set t_Co=256
 colorscheme railscasts
-" colorscheme tomorrow_night
 
 " Show active window through bars
 highlight StatusLine   ctermfg=253 ctermbg=232
@@ -227,4 +227,16 @@ nmap <Leader>sD :Simplenote -D<CR>
 
 " Markdown preview
 let vim_markdown_preview_hotkey='<C-m>'
+
+" The Silver Searcher
+if executable('ag')
+	" Use ag over grep
+	set grepprg=ag
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	let g:ctrlp_use_caching = 0
+
+	" bind \ to grep shortcut
+	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+	nnoremap \ :Ag<SPACE>
+endif
 
