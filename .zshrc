@@ -124,4 +124,4 @@ alias nib='
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Python3 -- starts a python 3 repl
-alias dpy="docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3-alpine"
+alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3 python'
