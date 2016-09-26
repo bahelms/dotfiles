@@ -26,7 +26,6 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
-" Plugin 'lambdatoast/elm.vim'
 Bundle 'ElmCast/elm-vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'AndrewRadev/splitjoin.vim'
@@ -39,6 +38,8 @@ Bundle 'wesQ3/vim-windowswap'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'scrooloose/syntastic'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'hdima/python-syntax'
+Bundle 'nvie/vim-flake8'
 " end Vundle
 
 " Brief help
@@ -57,6 +58,7 @@ set backspace=0
 set shell=bash
 
 let ruby_space_errors = 1
+let python_highlight_all = 1
 
 " Remap inline find commands
 nnoremap z m
@@ -166,6 +168,9 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+" Send cursor to end of line from insert mode
+inoremap <C-\> <ESC>A
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   " Preparation - save last search, and cursor position.
@@ -178,7 +183,7 @@ func! DeleteTrailingWS()
   let @/=_s
   call cursor(l, c)
 endfunc
-autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs :call DeleteTrailingWS()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :call DeleteTrailingWS()
 map <Leader>f :call DeleteTrailingWS()<CR><Leader>a
 
 " CoffeeScript 2 space indentation
@@ -192,9 +197,6 @@ set lazyredraw
 
 
 " Tests in Vim
-"
-" Test in file with spring
-" nmap <leader>r :!clear && echo bin/rspec && bin/rspec <C-R>=expand('%:p')<CR><CR>
 "
 " Run mix test for current file
 nmap <leader>s :!mix test <C-R>=expand('%:p')<CR><CR>
