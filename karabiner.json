@@ -1,0 +1,21 @@
+{
+  "profiles": [
+    {
+      "name": "macOS Laptop",
+      "selected": true,
+      "simple_modifications": {
+        "caps_lock": "escape",
+        "fn": "left_control",
+        "left_control": "fn"
+      }
+    }, {
+      "name": "macOS Thunderbolt",
+      "selected": false,
+      "simple_modifications": {
+        "caps_lock": "escape",
+        "left_command": "left_option",
+        "left_option": "left_command"
+      }
+    }
+  ]
+}
