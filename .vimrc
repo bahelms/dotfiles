@@ -56,6 +56,7 @@ syntax enable
 filetype plugin indent on      " required!
 set backspace=0
 set shell=bash
+set encoding=utf-8
 
 let ruby_space_errors = 1
 let python_highlight_all = 1

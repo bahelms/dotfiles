@@ -90,6 +90,8 @@ alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
 
+alias glg="git lg"
+
 # Ask permission before deleting
 # alias rm="rm -i"
 
@@ -98,6 +100,8 @@ export DEV_BOX=$HOME/work/devbox
 alias vup="cd $DEV_BOX;vagrant up --provision;"
 alias vhalt="cd $DEV_BOX; vagrant halt;"
 alias vssh="cd $DEV_BOX; vagrant ssh;"
+alias tk-qa='ssh deploy@107.23.40.50'       
+alias tk-prod='ssh deploy@107.23.80.107'      
 
 # added by travis gem
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
@@ -125,3 +129,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Python3 -- starts a python 3 repl
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3 python'
+
