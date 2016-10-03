@@ -4,7 +4,7 @@
 [alias]
 	st = status
 	co = checkout
-	lg = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  lg = log --pretty=format:'%C(bold yellow)%h%Creset - %C(green)%ad%Creset | %s%C(bold red)%d %C(bold blue)<%an>' --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
 	br = branch
