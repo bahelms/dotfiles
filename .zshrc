@@ -85,11 +85,10 @@ preexec() { print "" } # runs before command is executed
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias ls.="ls -Alfh"
+alias ls.="ls -flh"
 alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
-
 alias glg="git lg"
 
 # Ask permission before deleting
