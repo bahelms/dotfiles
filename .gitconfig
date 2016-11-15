@@ -12,6 +12,6 @@
 	editor = vim
 	autocrlf = input
 	safecrlf = true
-	excludesfile = /home/jimbonk/.gitignore
+	excludesfile = /Users/barretthelms/dotfiles/.global_ignore
 [push]
 	default = simple

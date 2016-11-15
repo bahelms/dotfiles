@@ -1,3 +1,8 @@
-\x auto
 \timing
 \setenv EDITOR vim
+
+-- Output display
+\x auto
+\set VERBOSITY verbose
+\pset null 'NULL'
+\set COMP_KEYWORD_CASE upper

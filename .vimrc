@@ -40,6 +40,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'hdima/python-syntax'
 Bundle 'nvie/vim-flake8'
+Bundle 'ludovicchabant/vim-gutentags'
+Bundle 'majutsushi/tagbar'
+Bundle 'gabrielelana/vim-markdown'
 " end Vundle
 
 " Brief help
@@ -184,7 +187,7 @@ func! DeleteTrailingWS()
   let @/=_s
   call cursor(l, c)
 endfunc
-autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :call DeleteTrailingWS()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py,*.md :call DeleteTrailingWS()
 map <Leader>f :call DeleteTrailingWS()<CR><Leader>a
 
 " CoffeeScript 2 space indentation
@@ -200,12 +203,11 @@ set lazyredraw
 " Tests in Vim
 "
 " Run mix test for current file
-nmap <leader>s :!mix test <C-R>=expand('%:p')<CR><CR>
+" nmap <leader>s :!mix test <C-R>=expand('%:p')<CR><CR>
 
 " Run rspec normally in Vim with vim-rspec
 let g:rspec_command = "!clear && echo bundle exec rspec {spec} && bundle exec rspec {spec}"
 let g:rspec_runner = "ox_x_iterm"
-map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
@@ -228,8 +230,7 @@ nmap <Leader>su :Simplenote -u<CR>
 nmap <Leader>sd :Simplenote -d<CR>
 nmap <Leader>sD :Simplenote -D<CR>
 
-" Markdown preview
-let vim_markdown_preview_hotkey='<C-m>'
+" Vim Markdown 
 
 " The Silver Searcher
 if executable('ag')
@@ -243,3 +244,7 @@ if executable('ag')
 	nnoremap \ :Ag<SPACE>
 endif
 
+" Tagbar
+map <Leader>t :TagbarToggle<CR>
+" Ctags
+nmap <C-\> <C-t>

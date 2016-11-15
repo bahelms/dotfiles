@@ -30,6 +30,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'ludovicchabant/vim-gutentags'
 " end Vundle
 
 " Brief help
