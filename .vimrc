@@ -230,8 +230,6 @@ nmap <Leader>su :Simplenote -u<CR>
 nmap <Leader>sd :Simplenote -d<CR>
 nmap <Leader>sD :Simplenote -D<CR>
 
-" Vim Markdown 
-
 " The Silver Searcher
 if executable('ag')
 	" Use ag over grep
