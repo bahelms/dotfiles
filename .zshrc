@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/barretthelms/.oh-my-zsh
+export ZSH=/Users/jimbonk/.oh-my-zsh
 
 if [ -r $HOME/.custom_env_vars ];
 then
@@ -55,8 +55,9 @@ plugins=(git bundler rails docker-compose)
 # User configuration
 
 # export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/barretthelms/apache-storm-1.0.1/bin:/Users/barretthelms/apache-maven-3.3.9/bin:/Users/barretthelms/elixir/noaa_weather"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin"
+
+export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,41 +92,14 @@ alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
 alias glg="git lg"
 
-# Ask permission before deleting
-# alias rm="rm -i"
-
-# Devbox stuff
-export DEV_BOX=$HOME/work/devbox
-alias vup="cd $DEV_BOX;vagrant up --provision;"
-alias vhalt="cd $DEV_BOX; vagrant halt;"
-alias vssh="cd $DEV_BOX; vagrant ssh;"
-alias tk-qa='ssh deploy@107.23.40.50'       
-alias tk-prod='ssh deploy@107.23.80.107'      
-
 # added by travis gem
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
-
-# For dinghy on docker-machine
-eval $(dinghy shellinit)
-# eval "$(docker-machine env default)"
-
-# Hub
-# alias git=hub
-
-# Nib
-alias nib='
-  docker run \
-    -it \
-    --rm \
-    -v $(pwd):$(pwd) \
-    -w $(pwd) \
-    -v $HOME/.docker/config.json:/root/.docker/config.json:ro \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -e "DOCKER_HOST_URL=$DOCKER_HOST" \
-    technekes/nib'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Python3 -- starts a python 3 repl
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3 python'
 
+# ANTLR
+alias antlr='java -jar /usr/local/lib/antlr-4.6-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'

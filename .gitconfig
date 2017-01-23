@@ -1,5 +1,5 @@
 [user]
-	name = bahelms
+	name = jimbonk
 	email = jimbonkgit@gmail.com
 [alias]
 	st = status
@@ -12,6 +12,6 @@
 	editor = vim
 	autocrlf = input
 	safecrlf = true
-	excludesfile = /Users/barretthelms/dotfiles/.global_ignore
+	excludesfile = /Users/jimbonk/dotfiles/.global_ignore
 [push]
 	default = simple

@@ -27,7 +27,6 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'ElmCast/elm-vim'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'SirVer/ultisnips'
@@ -38,11 +37,17 @@ Bundle 'wesQ3/vim-windowswap'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'scrooloose/syntastic'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'hdima/python-syntax'
 Bundle 'nvie/vim-flake8'
 Bundle 'ludovicchabant/vim-gutentags'
 Bundle 'majutsushi/tagbar'
 Bundle 'gabrielelana/vim-markdown'
+" Bundle 'hdima/python-syntax'
+Bundle 'python-mode/python-mode'
+Bundle 'rust-lang/rust.vim'
+Bundle 'jrozner/vim-antlr'
+Bundle 'rhysd/vim-crystal'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 " end Vundle
 
 " Brief help
@@ -224,11 +229,11 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/dotfiles/UltiSnips"]
 
 " Simplenote
 source ~/.simplenoterc
-nmap <Leader>sl :Simplenote -l<CR>
-nmap <Leader>sn :Simplenote -n<CR>
-nmap <Leader>su :Simplenote -u<CR>
-nmap <Leader>sd :Simplenote -d<CR>
-nmap <Leader>sD :Simplenote -D<CR>
+nmap <Leader>sl :SimplenoteList<CR>
+nmap <Leader>su :SimplenoteUpdate<CR>
+nmap <Leader>sn :SimplenoteNew<CR>
+nmap <Leader>sd :SimplenoteTrash<CR>
+nmap <Leader>sD :SimplenoteDelete<CR>
 
 " The Silver Searcher
 if executable('ag')
@@ -246,3 +251,14 @@ endif
 map <Leader>t :TagbarToggle<CR>
 " Ctags
 nmap <C-\> <C-t>
+
+" Pymode Options
+" let g:pymode_python = 'python3'
+let g:pymode_doc = 0
+nmap <Leader>l :PymodeLint<CR>
+let g:pymode_folding = 0
+let g:pymode_doc = 0
+let g:pymode_rope_complete_on_dot = 0
+
+" Airline config
+let g:airline_theme='base16'
