@@ -35,19 +35,18 @@ Bundle 'mtscout6/vim-cjsx'
 Bundle 'mrtazz/simplenote.vim'
 Bundle 'wesQ3/vim-windowswap'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'nvie/vim-flake8'
 Bundle 'ludovicchabant/vim-gutentags'
 Bundle 'majutsushi/tagbar'
-Bundle 'gabrielelana/vim-markdown'
-" Bundle 'hdima/python-syntax'
 Bundle 'python-mode/python-mode'
 Bundle 'rust-lang/rust.vim'
 Bundle 'jrozner/vim-antlr'
 Bundle 'rhysd/vim-crystal'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
+Bundle 'slim-template/vim-slim'
 " end Vundle
 
 " Brief help
@@ -139,7 +138,7 @@ nmap <F1> <ESC>
 " Easier shortcuts
 " Open file without retyping full path
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
-nnoremap <Leader>q :qa!<CR>
+nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>x :xa<CR>
 nmap <Leader>a <F2>:wa<CR>
 
@@ -170,6 +169,10 @@ map + "1p
 " Visual yank to clipboard
 vnoremap <Leader>c "+y
 
+" Easier line ends nav
+noremap H ^
+noremap L $
+
 
 " No arrow keys for you
 nnoremap <Left> :echoe "Use h"<CR>
@@ -192,7 +195,7 @@ func! DeleteTrailingWS()
   let @/=_s
   call cursor(l, c)
 endfunc
-autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py,*.md :call DeleteTrailingWS()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :call DeleteTrailingWS()
 map <Leader>f :call DeleteTrailingWS()<CR><Leader>a
 
 " CoffeeScript 2 space indentation
@@ -259,6 +262,9 @@ nmap <Leader>l :PymodeLint<CR>
 let g:pymode_folding = 0
 let g:pymode_doc = 0
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_lint_on_write = 0
 
 " Airline config
-let g:airline_theme='base16'
+let g:airline_theme='bubblegum'
+
+set wrap

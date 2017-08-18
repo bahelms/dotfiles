@@ -85,6 +85,8 @@ preexec() { print "" } # runs before command is executed
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# $(dinghy shellinit)
+#
 # Aliases
 alias ls.="ls -flhG"
 alias drc="docker ps -aqf status=exited | xargs docker rm -v"
@@ -98,8 +100,15 @@ alias glg="git lg"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Python3 -- starts a python 3 repl
-alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3 python'
+alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.2 python'
+
+# Scala -- starts a scala repl
+alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:2.12.1 scala'
 
 # ANTLR
 alias antlr='java -jar /usr/local/lib/antlr-4.6-complete.jar'
 alias grun='java org.antlr.v4.gui.TestRig'
+
+# Chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
