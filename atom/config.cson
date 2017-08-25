@@ -1,0 +1,30 @@
+"*":
+  "atom-python-run":
+    extension_filter: [
+      ".py"
+    ]
+  core:
+    audioBeep: false
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "one-dark-nova-syntax"
+    ]
+  editor:
+    fontSize: 19
+    lineHeight: 1.2
+    softWrap: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "2e63455c-30e5-498f-bf27-0f193e655698"
+  fonts:
+    fontFamily: "Office Code Pro"
+  "linter-python":
+    executablePath: "/usr/local/bin/pylama"
+  "linter-ui-default":
+    showPanel: true
+  welcome:
+    showOnStartup: false
+".python.source":
+  editor:
+    tabLength: 4
