@@ -10,7 +10,7 @@ fi
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jimbonk"
+ZSH_THEME="af-magic"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -100,10 +100,16 @@ alias glg="git lg"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Python3 -- starts a python 3 repl
-alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.2 python'
+alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:latest python'
 
 # Scala -- starts a scala repl
-alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:2.12.1 scala'
+alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:latest scala'
+
+# Ruby -- starts an IRB session
+alias drb='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app ruby:latest irb'
+
+# Elixir -- starts an IEX session
+alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:latest iex'
 
 # ANTLR
 alias antlr='java -jar /usr/local/lib/antlr-4.6-complete.jar'
