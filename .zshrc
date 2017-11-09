@@ -99,17 +99,13 @@ alias glg="git lg"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Python3 -- starts a python 3 repl
-alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:latest python'
-
-# Scala -- starts a scala repl
+# Docker app shortcuts
+alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.3 python'
 alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:latest scala'
-
-# Ruby -- starts an IRB session
 alias drb='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app ruby:latest irb'
-
-# Elixir -- starts an IEX session
-alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:latest iex'
+alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:1.5.2 iex'
+alias neo='docker run --rm -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j:latest'
+alias dps='docker ps -a --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.CreatedAt}}"'
 
 # ANTLR
 alias antlr='java -jar /usr/local/lib/antlr-4.6-complete.jar'
