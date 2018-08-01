@@ -55,7 +55,7 @@ plugins=(git bundler rails docker-compose)
 # User configuration
 
 # export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin:/Users/jimbonk/languages/dart/flutter/bin"
 
 export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
 
@@ -88,7 +88,7 @@ preexec() { print "" } # runs before command is executed
 # $(dinghy shellinit)
 #
 # Aliases
-alias ls.="ls -flhG"
+alias ls.="ls -alhG"
 alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
@@ -103,7 +103,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.3 python'
 alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:latest scala'
 alias drb='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app ruby:latest irb'
-alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:1.5.2 iex'
+alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:1.6.0 iex'
 alias neo='docker run --rm -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j:latest'
 alias dps='docker ps -a --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.CreatedAt}}"'
 
@@ -114,3 +114,6 @@ alias grun='java org.antlr.v4.gui.TestRig'
 # Chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# Reindex Spotlight
+alias reindex='sudo mdutil -E /'
