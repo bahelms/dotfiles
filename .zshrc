@@ -93,6 +93,7 @@ alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
 alias glg="git lg"
+alias nv="nvim"
 
 # added by travis gem
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
@@ -103,7 +104,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.3 python'
 alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:latest scala'
 alias drb='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app ruby:latest irb'
-alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:1.6.0 iex'
+alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:1.7.1 iex'
 alias neo='docker run --rm -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j:latest'
 alias dps='docker ps -a --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.CreatedAt}}"'
 

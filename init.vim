@@ -2,50 +2,26 @@ set nocompatible               " be iMproved
 filetype off
 set noswapfile
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-
-" let Vundle manage Vundle required!
-Bundle 'VundleVim/Vundle.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'ervandew/supertab'
-Bundle 'skalnik/vim-vroom'
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'dockyard/vim-easydir'
-Bundle 'ludovicchabant/vim-gutentags'
-Bundle 'majutsushi/tagbar'
-Bundle 'slim-template/vim-slim'
-" end Vundle
-" :BundleInstall(!)    - install(update) bundles
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
 call plug#begin('~/.local/share/nvim/plugged')
-" Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ervandew/supertab'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'kien/ctrlp.vim'
-Plug 'rakr/vim-one'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
-
-" Languages
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mtscout6/vim-cjsx'
-Plug 'rhysd/vim-crystal'
-Plug 'rust-lang/rust.vim'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby'
+Plug 'sheerun/vim-polyglot'
+Plug 'rakr/vim-one'
+Plug 'mhinz/vim-mix-format'
+Plug 'neomake/neomake'
+Plug 'slashmili/alchemist.vim'
 call plug#end()
 
 " Plug help
@@ -60,23 +36,16 @@ filetype plugin indent on      " required!
 set backspace=0
 set shell=bash
 set encoding=utf-8
+set title
 
-" Remap inline find commands
-nnoremap z m
-nnoremap M ,
-nnoremap m ;
-vnoremap M ,
-vnoremap m ;
-
-" Remap : command
-nnoremap ; :
-vnoremap ; :
+" Detect external file changes
+au FocusGained * :checktime
+au VimResume * :checktime
 
 let mapleader=","
 
 " Colorscheme
 set termguicolors
-" colorscheme firewatch
 colorscheme one
 set background=dark
 " Airline config
@@ -99,6 +68,7 @@ set laststatus=2          " always show status line
 
 " Highlight searching and cancel highlight
 set hlsearch
+set ignorecase
 nmap <leader>h :noh<CR>
 
 " NERDTree
@@ -120,6 +90,17 @@ nmap <C-L> <C-W><C-L>
 
 "No help
 nmap <F1> <ESC>
+
+" Remap inline find commands
+nnoremap z m
+nnoremap M ,
+nnoremap m ;
+vnoremap M ,
+vnoremap m ;
+
+" Remap : command
+nnoremap ; :
+vnoremap ; :
 
 " Easier shortcuts
 " Open file without retyping full path
@@ -192,14 +173,6 @@ let g:UltiSnipsEditSplit="vertical"
 " Add search path
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/dotfiles/UltiSnips"]
 
-" Simplenote
-source ~/.simplenoterc
-nmap <Leader>sl :SimplenoteList<CR>
-nmap <Leader>su :SimplenoteUpdate<CR>
-nmap <Leader>sn :SimplenoteNew<CR>
-nmap <Leader>sd :SimplenoteTrash<CR>
-nmap <Leader>sD :SimplenoteDelete<CR>
-
 " The Silver Searcher
 if executable('ag')
 	" Use ag over grep
@@ -212,7 +185,15 @@ if executable('ag')
 	nnoremap \ :Ag<SPACE>
 endif
 
-" Tagbar
-map <Leader>t :TagbarToggle<CR>
-" Ctags
-nmap <C-\> <C-t>
+" vim-mix-format
+let g:mix_format_on_save = 1
+
+" neomake
+" execute when buffer is saved
+augroup localneomake
+  autocmd! BufWritePost * Neomake
+augroup END
+
+" Alchemist
+" test current file
+map <Leader>t :Mix test @%<CR>
