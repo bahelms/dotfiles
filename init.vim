@@ -1,4 +1,3 @@
-set nocompatible               " be iMproved
 filetype off
 set noswapfile
 
@@ -10,7 +9,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -18,10 +17,15 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
-Plug 'rakr/vim-one'
+Plug 'rakr/vim-one'  " colorscheme
 Plug 'mhinz/vim-mix-format'
 Plug 'neomake/neomake'
 Plug 'slashmili/alchemist.vim'
+Plug 'fatih/vim-go'
+Plug 'mattn/emmet-vim'  " expand HAML syntax to HTML
+Plug 'jakwings/vim-pony'
+Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
+Plug '/usr/local/opt/fzf' " fuzzy file finder installed with Homebrew
 call plug#end()
 
 " Plug help
@@ -32,7 +36,6 @@ call plug#end()
 
 syntax on
 syntax enable
-filetype plugin indent on      " required!
 set backspace=0
 set shell=bash
 set encoding=utf-8
@@ -50,7 +53,8 @@ colorscheme one
 set background=dark
 " Airline config
 let g:airline_theme='bubblegum'
-highlight Normal guibg=#1F242E
+" highlight Normal guibg=#1F242E
+highlight Normal guibg=#171B22
 
 set guicursor=
 set noerrorbells
@@ -189,6 +193,8 @@ endif
 let g:mix_format_on_save = 1
 
 " neomake
+" Stop using pylama and use pylava
+call neomake#config#set('ft.python.pylama.exe', 'pylava')
 " execute when buffer is saved
 augroup localneomake
   autocmd! BufWritePost * Neomake
@@ -196,4 +202,23 @@ augroup END
 
 " Alchemist
 " test current file
-map <Leader>t :Mix test @%<CR>
+let g:alchemist_keyword_map = '<leader>K'
+map <Leader>t :Mix test %<CR>
+imap <Leader>g <C-x><C-o>
+
+" vim-go
+let g:go_fmt_command = 'goimports'
+
+" emmet-vim
+" let g:user_emmet_leader_key = '<c-e>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" Fixmyjs
+" autocmd BufWritePost *.js,*.jsx :Fixmyjs
+ 
+" FZF
+nnoremap <C-p> :<C-u>FZF<CR>

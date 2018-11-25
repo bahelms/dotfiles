@@ -50,14 +50,14 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler rails docker-compose)
+plugins=(git bundler docker-compose)
 
 # User configuration
 
-# export PATH="$PATH:/Users/barretthelms/.rvm/gems/ruby-2.2.1/bin:/Users/barretthelms/.rvm/gems/ruby-2.2.1@global/bin:/Users/barretthelms/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/barretthelms/.rvm/bin:/Users/barretthelms/.rvm/bin"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin:/Users/jimbonk/languages/dart/flutter/bin"
-
+export GOPATH="/Users/jimbonk/languages/go"
 export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin:/Users/jimbonk/languages/dart/flutter/bin:$GOPATH/bin"
+export FZF_DEFAULT_COMMAND='rg --files'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,9 +112,8 @@ alias dps='docker ps -a --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.Crea
 alias antlr='java -jar /usr/local/lib/antlr-4.6-complete.jar'
 alias grun='java org.antlr.v4.gui.TestRig'
 
-# Chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-
 # Reindex Spotlight
 alias reindex='sudo mdutil -E /'
+
+# Find file with FZF and open in neovim
+alias fnv='nv $(fzf)'

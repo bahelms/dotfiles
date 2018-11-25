@@ -9,7 +9,7 @@
 	dump = cat-file -p
 	br = branch
 [core]
-	editor = vim
+	editor = nvim
 	autocrlf = input
 	safecrlf = true
 	excludesfile = /Users/jimbonk/dotfiles/.global_ignore
