@@ -1,13 +1,13 @@
 extends ruby
 
 snippet it "opens rspec IT block" b
-it '${1:does something}' do
+it "${1:does something}" do
 	${2:pending}
 end
 endsnippet
 
 snippet cont "opens rspec CONTEXT block" b
-context '${1:when ...}' do
+context "${1:when ...}" do
   $0
 end
 endsnippet

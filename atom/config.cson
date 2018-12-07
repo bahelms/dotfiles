@@ -8,11 +8,12 @@
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
-      "one-dark-nova-syntax"
+      "firewatch-syntax"
     ]
   editor:
-    fontSize: 19
-    lineHeight: 1.2
+    fontFamily: "Inconsolata, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 15
+    lineHeight: 1
     softWrap: true
     tabType: "soft"
   "exception-reporting":

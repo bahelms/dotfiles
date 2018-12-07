@@ -24,6 +24,11 @@
     ', q': 'core:close'
     ', s': 'vim-mode-plus:surround'
     ', t': 'tree-view:toggle-focus'
+
+'.platform-darwin':
+  'ctrl-n': 'tree-view:toggle'
+'.workspace':
+  'ctrl-shift-g': 'github:toggle-git-tab'
 #
 # 'atom-workspace':
 #   'ctrl-shift-p': 'core:move-up'

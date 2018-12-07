@@ -1,6 +1,16 @@
 filetype off
 set noswapfile
 
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -9,13 +19,12 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'rakr/vim-one'  " colorscheme
 Plug 'mhinz/vim-mix-format'
@@ -26,6 +35,7 @@ Plug 'mattn/emmet-vim'  " expand HAML syntax to HTML
 Plug 'jakwings/vim-pony'
 Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
 Plug '/usr/local/opt/fzf' " fuzzy file finder installed with Homebrew
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 call plug#end()
 
 " Plug help
@@ -52,7 +62,7 @@ set termguicolors
 colorscheme one
 set background=dark
 " Airline config
-let g:airline_theme='bubblegum'
+" let g:airline_theme='bubblegum'
 " highlight Normal guibg=#1F242E
 highlight Normal guibg=#171B22
 
@@ -144,6 +154,14 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Send cursor to end of line from insert mode
 inoremap <C-\> <ESC>A
 
+" Neovim terminal mode
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+  highlight! link TermCursor Cursor
+  highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+endif
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   " Preparation - save last search, and cursor position.
@@ -210,6 +228,7 @@ imap <Leader>g <C-x><C-o>
 let g:go_fmt_command = 'goimports'
 
 " emmet-vim
+" <C-y> then ,
 " let g:user_emmet_leader_key = '<c-e>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {

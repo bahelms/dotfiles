@@ -54,12 +54,14 @@ plugins=(git bundler docker-compose)
 
 # User configuration
 
-export GOPATH="/Users/jimbonk/languages/go"
+export GOPATH="/Users/barretthelms/languages/go"
 export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin:/Users/jimbonk/languages/dart/flutter/bin:$GOPATH/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/barretthelms/apache-storm-1.0.1/bin:/Users/barretthelms/apache-maven-3.3.9/bin:/Users/barretthelms/noaa_weather:/Users/barretthelms/.cargo/bin:/Users/barretthelms/languages/dart/flutter/bin:$GOPATH/bin"
 export FZF_DEFAULT_COMMAND='rg --files'
 
 source $ZSH/oh-my-zsh.sh
+source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
+
 
 preexec() { print "" } # runs before command is executed
 # precmd() { print "" }  # runs before prompt is displayed
@@ -117,3 +119,15 @@ alias reindex='sudo mdutil -E /'
 
 # Find file with FZF and open in neovim
 alias fnv='nv $(fzf)'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+# Todoist
+alias tl='todoist --color --indent'
+
+eval "$(nodenv init -)"
+eval "$(rbenv init -)"
