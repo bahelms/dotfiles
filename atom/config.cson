@@ -1,10 +1,39 @@
 "*":
+  "atom-elixir-formatter":
+    elixirExecutable: "/Users/barretthelms/.asdf/shims/elixir"
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
+    "atom-ide-diagnostics-ui":
+      autoVisibility: true
+      showDirectoryColumn: true
   "atom-python-run":
     extension_filter: [
       ".py"
     ]
+  "autocomplete-plus":
+    confirmCompletion: "tab"
   core:
     audioBeep: false
+    closeDeletedFileTabs: true
+    disabledPackages: [
+      "linter"
+      "autocomplete-ruby"
+    ]
+    excludeVcsIgnoredPaths: false
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "_build"
+      "deps"
+      "node_modules"
+    ]
+    packagesWithKeymapsDisabled: []
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
@@ -12,7 +41,7 @@
     ]
   editor:
     fontFamily: "Inconsolata, Consolas, DejaVu Sans Mono, monospace"
-    fontSize: 15
+    fontSize: 18
     lineHeight: 1
     softWrap: true
     tabType: "soft"
@@ -20,12 +49,48 @@
     userId: "2e63455c-30e5-498f-bf27-0f193e655698"
   fonts:
     fontFamily: "Office Code Pro"
+  "git-blame":
+    columnWidth: 388
+  "go-plus":
+    config:
+      gopath: "/Users/barretthelms/languages/go"
+    lint:
+      args: [
+        "--vendor"
+        "--disable-all"
+        "--enable=golint"
+        "--enable=vet"
+        "--enable=ineffassign"
+        "--enable=goconst"
+        "--tests"
+        "--json"
+        "."
+      ]
+    panel:
+      displayMode: "closed"
+      fontSize: "1.1em"
+    test: {}
   "linter-python":
     executablePath: "/usr/local/bin/pylama"
+  "linter-rubocop":
+    command: "/Users/barretthelms/.rbenv/shims/rubocop"
   "linter-ui-default":
-    showPanel: true
+    panelHeight: 148
+  "platformio-ide-terminal":
+    ansiColors:
+      normal:
+        black: "#808080"
+    style:
+      defaultPanelHeight: "400px"
+      fontFamily: "Roboto Mono"
+      fontSize: "15"
+  "tree-view": {}
+  "vim-mode-plus":
+    automaticallyEscapeInsertModeOnActivePaneItemChange: true
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
 ".python.source":
   editor:
     tabLength: 4

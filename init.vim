@@ -1,16 +1,6 @@
 filetype off
 set noswapfile
 
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -35,7 +25,6 @@ Plug 'mattn/emmet-vim'  " expand HAML syntax to HTML
 Plug 'jakwings/vim-pony'
 Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
 Plug '/usr/local/opt/fzf' " fuzzy file finder installed with Homebrew
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 call plug#end()
 
 " Plug help
@@ -64,7 +53,8 @@ set background=dark
 " Airline config
 " let g:airline_theme='bubblegum'
 " highlight Normal guibg=#1F242E
-highlight Normal guibg=#171B22
+highlight Normal guibg=#001527
+highlight Normal guifg=#d8d8d8
 
 set guicursor=
 set noerrorbells

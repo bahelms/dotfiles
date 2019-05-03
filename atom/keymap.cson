@@ -10,6 +10,9 @@
 #
 # Here's an example taken from Atom's built-in keymap:
 #
+'atom-text-editor.vim-mode-plus':
+    'ctrl-\\': 'vim-mode-plus:move-to-last-character-of-line'
+
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
     'ctrl-j': 'window:focus-pane-below'
     'ctrl-k': 'window:focus-pane-above'
@@ -19,11 +22,16 @@
     'H': 'vim-mode-plus:move-to-first-character-of-line'
     'm': 'vim-mode-plus:repeat-find'
     'M': 'vim-mode-plus:repeat-find-reverse'
+    'K': 'keystroke i enter escape'
     'c s': 'vim-mode-plus:change-surround'
     ', a': 'window:save-all'
     ', q': 'core:close'
-    ', s': 'vim-mode-plus:surround'
     ', t': 'tree-view:toggle-focus'
+    ';': 'ex-mode:open'
+    'ctrl-b': 'git-blame:toggle'
+
+'atom-text-editor.vim-mode-plus.visual-mode':
+  'S': 'vim-mode-plus:surround'
 
 '.platform-darwin':
   'ctrl-n': 'tree-view:toggle'

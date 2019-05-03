@@ -29,9 +29,31 @@ atom-text-editor {
       color: #ffffff;
     }
   }
+  // font-weight: bold;
 }
 
+
 // style UI elements inside atom-text-editor
+@cursor-color: #fff;
+
 atom-text-editor .cursor {
-  // border-color: red;
+  border-color: @cursor-color;
+}
+
+atom-text-editor.vim-mode-plus.normal-mode {
+  &.is-focused {
+    .cursor {
+      background-color: @cursor-color;
+      opacity: 0.8 !important;
+    }
+  }
+}
+
+atom-text-editor.vim-mode-plus.insert-mode {
+  &.is-focused {
+    .cursor {
+      background-color: @cursor-color;
+      opacity: 0.7 !important;
+    }
+  }
 }
