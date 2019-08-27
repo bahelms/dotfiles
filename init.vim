@@ -9,22 +9,29 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'rakr/vim-one'  " colorscheme
 Plug 'mhinz/vim-mix-format'
 Plug 'neomake/neomake'
 Plug 'slashmili/alchemist.vim'
-Plug 'fatih/vim-go'
-Plug 'mattn/emmet-vim'  " expand HAML syntax to HTML
+" Plug 'fatih/vim-go'
 Plug 'jakwings/vim-pony'
 Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
 Plug '/usr/local/opt/fzf' " fuzzy file finder installed with Homebrew
+Plug 'iberianpig/ranger-explorer.vim'
+Plug 'rbgrouleff/bclose.vim'  " needed for ranger-explorer
+Plug 'haishanh/night-owl.vim' " theme
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'css', 'scss', 'json', 'html', 'yaml', 'markdown'] }
+Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter' "show Git changes in gutter
+" Plug 'mattn/emmet-vim'  " expand HAML syntax to HTML
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Plug help
@@ -41,8 +48,7 @@ set encoding=utf-8
 set title
 
 " Detect external file changes
-au FocusGained * :checktime
-au VimResume * :checktime
+au FocusGained,VimResume * :checktime
 
 let mapleader=","
 
@@ -53,7 +59,7 @@ set background=dark
 " Airline config
 " let g:airline_theme='bubblegum'
 " highlight Normal guibg=#1F242E
-highlight Normal guibg=#001527
+highlight Normal guibg=#011627
 highlight Normal guifg=#d8d8d8
 
 set guicursor=
@@ -67,19 +73,14 @@ set shiftwidth=2
 set splitbelow
 set splitright
 set pastetoggle=<leader>[
-set number                " show line numbers
+set number relativenumber " show relative line numbers and current line no
 set laststatus=2          " always show status line
+set clipboard=unnamedplus " all yanks go to clipboard
 
 " Highlight searching and cancel highlight
 set hlsearch
 set ignorecase
 nmap <leader>h :noh<CR>
-
-" NERDTree
-" autocmd vimenter * NERDTree  " Start NERDTree on vim start
-let NERDTreeShowHidden = 1
-let NERDTreeHighlightCursorline = 0
-map <C-n> :NERDTreeToggle<CR>
 
 " Set 80 character line
 highlight ColorColumn ctermbg=235 guibg=#33334d
@@ -108,7 +109,7 @@ vnoremap ; :
 
 " Easier shortcuts
 " Open file without retyping full path
-nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
+" nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
 nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>x :xa<CR>
 nmap <Leader>a :wa<CR>
@@ -203,10 +204,15 @@ let g:mix_format_on_save = 1
 " neomake
 " Stop using pylama and use pylava
 call neomake#config#set('ft.python.pylama.exe', 'pylava')
+call neomake#configure#automake('w')
 " execute when buffer is saved
 augroup localneomake
   autocmd! BufWritePost * Neomake
 augroup END
+" ESlint
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+" let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 " Alchemist
 " test current file
@@ -226,8 +232,19 @@ let g:user_emmet_settings = {
     \  },
   \}
 
-" Fixmyjs
-" autocmd BufWritePost *.js,*.jsx :Fixmyjs
- 
 " FZF
 nnoremap <C-p> :<C-u>FZF<CR>
+
+" Prettier
+if filereadable('.prettierconfig') || filereadable('.prettierrc')
+  let g:prettier#quickfix_enabled = 0
+  let g:prettier#autoformat = 0
+  autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
+endif
+" autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
+
+" Ranger
+nnoremap <silent><leader>e :RangerOpenCurrentDir<CR>
+
+" gitgutter
+set updatetime=100
