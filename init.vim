@@ -1,37 +1,37 @@
-filetype off
+" filetype off
 set noswapfile
+set nocompatible
 
 call plug#begin('~/.local/share/nvim/plugged')
+" languages
+Plug 'vim-ruby/vim-ruby'
+Plug 'fatih/vim-go'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ervandew/supertab'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
-Plug 'sheerun/vim-polyglot'
-Plug 'rakr/vim-one'  " colorscheme
-Plug 'mhinz/vim-mix-format'
-Plug 'neomake/neomake'
-Plug 'slashmili/alchemist.vim'
-" Plug 'fatih/vim-go'
-Plug 'jakwings/vim-pony'
+" Plug 'neomake/neomake'
+Plug 'dense-analysis/ale'
 Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
-Plug '/usr/local/opt/fzf' " fuzzy file finder installed with Homebrew
-Plug 'iberianpig/ranger-explorer.vim'
-Plug 'rbgrouleff/bclose.vim'  " needed for ranger-explorer
+Plug 'rakr/vim-one'  " colorscheme
 Plug 'haishanh/night-owl.vim' " theme
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'css', 'scss', 'json', 'html', 'yaml', 'markdown'] }
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter' "show Git changes in gutter
-" Plug 'mattn/emmet-vim'  " expand HAML syntax to HTML
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Plug help
@@ -56,9 +56,6 @@ let mapleader=","
 set termguicolors
 colorscheme one
 set background=dark
-" Airline config
-" let g:airline_theme='bubblegum'
-" highlight Normal guibg=#1F242E
 highlight Normal guibg=#011627
 highlight Normal guifg=#d8d8d8
 
@@ -67,8 +64,13 @@ set noerrorbells
 
 " Uses spaces instead of tabs, Softtabs, 2 spaces
 set expandtab
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
+
+" For Go
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
 
 set splitbelow
 set splitright
@@ -80,7 +82,6 @@ set clipboard=unnamedplus " all yanks go to clipboard
 " Highlight searching and cancel highlight
 set hlsearch
 set ignorecase
-nmap <leader>h :noh<CR>
 
 " Set 80 character line
 highlight ColorColumn ctermbg=235 guibg=#33334d
@@ -94,7 +95,7 @@ nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
 "No help
-nmap <F1> <ESC>
+" nmap <F1> <ESC>
 
 " Remap inline find commands
 nnoremap z m
@@ -107,46 +108,43 @@ vnoremap m ;
 nnoremap ; :
 vnoremap ; :
 
-" Easier shortcuts
-" Open file without retyping full path
-" nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR><CR>
+" Leader shortcuts
 nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>x :xa<CR>
 nmap <Leader>a :wa<CR>
+nmap <leader>h :noh<CR>
 
 " Fast return
 nnoremap K i<CR><ESC>
 
-" Yank/delete remaps
-" Yank line into register "0 and ""
-nmap - ^y$
-vmap - y
-" Paste yank
-map = "0p
-" Delete line into register ""
-nmap _ ^"1D
-vmap _ "1D
-" Paste delete
-map + "1p
-
-" Visual yank to clipboard
-vnoremap <Leader>c "+y
+" " Yank/delete remaps
+" " Yank line into register "0 and ""
+" nmap - ^y$
+" vmap - y
+" " Paste yank
+" map = "0p
+" " Delete line into register ""
+" nmap _ ^"1D
+" vmap _ "1D
+" " Paste delete
+" map + "1p
 
 " Easier line ends nav
 nnoremap H ^
 nnoremap L $
 
 " No arrow keys for you
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
 
 " Send cursor to end of line from insert mode
 inoremap <C-\> <ESC>A
 
 " Neovim terminal mode
 if has('nvim')
+  nnoremap <Leader>st :sp term://zsh<CR>
   tnoremap <Esc> <C-\><C-n>
   tnoremap <C-v><Esc> <Esc>
   highlight! link TermCursor Cursor
@@ -165,8 +163,7 @@ func! DeleteTrailingWS()
   let @/=_s
   call cursor(l, c)
 endfunc
-autocmd BufWritePre *.rb,*.js,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :call DeleteTrailingWS()
-map <Leader>f :call DeleteTrailingWS()<CR><Leader>a
+autocmd BufWritePre *.rb,*.js,*.es6,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :call DeleteTrailingWS()
 
 " CoffeeScript 2 space indentation
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
@@ -176,52 +173,31 @@ set t_ti= t_te=
 let html_no_rendering=1   " Don't render HTML in vim
 set lazyredraw
 
-" UltiSnips config
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-" Add search path
-let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/dotfiles/UltiSnips"]
-
 " The Silver Searcher
-if executable('ag')
-	" Use ag over grep
-	set grepprg=ag
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-	let g:ctrlp_use_caching = 0
-
-	" bind \ to grep shortcut
-	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-	nnoremap \ :Ag<SPACE>
-endif
+nnoremap \ :Ag<SPACE>
 
 " vim-mix-format
 let g:mix_format_on_save = 1
 
 " neomake
 " Stop using pylama and use pylava
-call neomake#config#set('ft.python.pylama.exe', 'pylava')
-call neomake#configure#automake('w')
-" execute when buffer is saved
-augroup localneomake
-  autocmd! BufWritePost * Neomake
-augroup END
+" call neomake#config#set('ft.python.pylama.exe', 'pylava')
+" call neomake#configure#automake('nw', 750)
+" " execute when buffer is saved
+" augroup localneomake
+"   autocmd! BufWritePost * Neomake
+" augroup END
 " ESlint
 " let g:neomake_javascript_enabled_makers = ['eslint']
 " let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 " let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
-" Alchemist
-" test current file
-let g:alchemist_keyword_map = '<leader>K'
-map <Leader>t :Mix test %<CR>
-imap <Leader>g <C-x><C-o>
-
 " vim-go
 let g:go_fmt_command = 'goimports'
+let g:go_highlight_structs = 0
+let g:go_highlight_interfaces = 0
+let g:go_highlight_operators = 0
+let g:go_doc_keywordprg_enabled = 0
 
 " emmet-vim
 " <C-y> then ,
@@ -232,19 +208,19 @@ let g:user_emmet_settings = {
     \  },
   \}
 
-" FZF
-nnoremap <C-p> :<C-u>FZF<CR>
-
 " Prettier
 if filereadable('.prettierconfig') || filereadable('.prettierrc')
   let g:prettier#quickfix_enabled = 0
   let g:prettier#autoformat = 0
   autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
 endif
-" autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
-
-" Ranger
-nnoremap <silent><leader>e :RangerOpenCurrentDir<CR>
 
 " gitgutter
 set updatetime=100
+
+" netrw
+let g:netrw_banner=0
+nnoremap <silent><leader>e :Explore<CR>
+
+" fzf
+map <Leader>f :Files<CR>
