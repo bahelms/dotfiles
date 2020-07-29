@@ -1,37 +1,34 @@
-" filetype off
+filetype plugin indent on
 set noswapfile
 set nocompatible
 
 call plug#begin('~/.local/share/nvim/plugged')
 " languages
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'pangloss/vim-javascript'
-
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'wesQ3/vim-windowswap'
-" Plug 'neomake/neomake'
 Plug 'dense-analysis/ale'
 Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
 Plug 'rakr/vim-one'  " colorscheme
-Plug 'haishanh/night-owl.vim' " theme
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'css', 'scss', 'json', 'html', 'yaml', 'markdown'] }
+       \ 'for': ['javascript', 'css', 'scss', 'json', 'html', 'yaml', 'markdown'] }
 Plug 'airblade/vim-gitgutter' "show Git changes in gutter
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-test/vim-test'
 call plug#end()
 
 " Plug help
@@ -40,7 +37,7 @@ call plug#end()
 " :PlugClean!   - remove unused plugins
 " :PlugUpgrade  - update vim-plug
 
-syntax on
+" syntax on
 syntax enable
 set backspace=0
 set shell=bash
@@ -50,13 +47,15 @@ set title
 " Detect external file changes
 au FocusGained,VimResume * :checktime
 
-let mapleader=","
+" let mapleader=","
+let mapleader=" "
 
 " Colorscheme
 set termguicolors
 colorscheme one
 set background=dark
-highlight Normal guibg=#011627
+" highlight Normal guibg=#011627
+highlight Normal guibg=none
 highlight Normal guifg=#d8d8d8
 
 set guicursor=
@@ -74,25 +73,26 @@ au FileType go set softtabstop=4
 
 set splitbelow
 set splitright
-set pastetoggle=<leader>[
+set pastetoggle=<Leader>[
 set number relativenumber " show relative line numbers and current line no
 set laststatus=2          " always show status line
 set clipboard=unnamedplus " all yanks go to clipboard
 
 " Highlight searching and cancel highlight
 set hlsearch
-set ignorecase
+nmap <Leader>h :noh<CR>
+hi Search guibg=#d665cf
 
 " Set 80 character line
 highlight ColorColumn ctermbg=235 guibg=#33334d
 set colorcolumn=80        " show column 80
 
 " REMAPS
-" Window navigation
-nmap <C-J> <C-W><C-J>
-nmap <C-K> <C-W><C-K>
+" Window navigation for Dvorak
 nmap <C-H> <C-W><C-H>
-nmap <C-L> <C-W><C-L>
+nmap <C-T> <C-W><C-K>
+nmap <C-N> <C-W><C-J>
+nmap <C-S> <C-W><C-L>
 
 "No help
 " nmap <F1> <ESC>
@@ -112,32 +112,17 @@ vnoremap ; :
 nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>x :xa<CR>
 nmap <Leader>a :wa<CR>
-nmap <leader>h :noh<CR>
+nmap <Leader><BS> :wa<CR>
+nmap <Leader>v <C-w>v
+nmap <Leader>l <C-w>s
+
 
 " Fast return
 nnoremap K i<CR><ESC>
 
-" " Yank/delete remaps
-" " Yank line into register "0 and ""
-" nmap - ^y$
-" vmap - y
-" " Paste yank
-" map = "0p
-" " Delete line into register ""
-" nmap _ ^"1D
-" vmap _ "1D
-" " Paste delete
-" map + "1p
-
 " Easier line ends nav
 nnoremap H ^
 nnoremap L $
-
-" No arrow keys for you
-" nnoremap <Left> :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up> :echoe "Use k"<CR>
-" nnoremap <Down> :echoe "Use j"<CR>
 
 " Send cursor to end of line from insert mode
 inoremap <C-\> <ESC>A
@@ -166,8 +151,8 @@ endfunc
 autocmd BufWritePre *.rb,*.js,*.es6,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :call DeleteTrailingWS()
 
 " CoffeeScript 2 space indentation
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-set t_ti= t_te=
+" au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+" set t_ti= t_te=
 
 " Speedups
 let html_no_rendering=1   " Don't render HTML in vim
@@ -178,19 +163,6 @@ nnoremap \ :Ag<SPACE>
 
 " vim-mix-format
 let g:mix_format_on_save = 1
-
-" neomake
-" Stop using pylama and use pylava
-" call neomake#config#set('ft.python.pylama.exe', 'pylava')
-" call neomake#configure#automake('nw', 750)
-" " execute when buffer is saved
-" augroup localneomake
-"   autocmd! BufWritePost * Neomake
-" augroup END
-" ESlint
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-" let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 " vim-go
 let g:go_fmt_command = 'goimports'
@@ -212,15 +184,31 @@ let g:user_emmet_settings = {
 if filereadable('.prettierconfig') || filereadable('.prettierrc')
   let g:prettier#quickfix_enabled = 0
   let g:prettier#autoformat = 0
-  autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
+  autocmd BufWritePre *.css,*.scss,*.json,*.md,*.yaml PrettierAsync
+  " autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
 endif
 
 " gitgutter
 set updatetime=100
 
-" netrw
-let g:netrw_banner=0
-nnoremap <silent><leader>e :Explore<CR>
-
 " fzf
-map <Leader>f :Files<CR>
+map <Leader>i :Files<CR>
+
+" rust.vim
+let g:rustfmt_autosave = 1
+
+" coc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+" ale
+let g:ale_fixers = { 'elixir': ['mix_format'] }
+let g:ale_fix_on_save = 1
+
+" projectionist
+nmap <Leader>tt :A<CR>
+nmap <Leader>tv :AV<CR>
+
+" vim-test
+nmap <Leader>tn :TestNearest<CR>
+nmap <Leader>tf :TestFile<CR>
