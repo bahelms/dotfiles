@@ -3,3 +3,4 @@ tags.lock
 .elixir_ls
 .vscode
 codeship.aes
+.projections.json

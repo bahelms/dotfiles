@@ -92,7 +92,7 @@ set colorcolumn=80        " show column 80
 nmap <C-H> <C-W><C-H>
 nmap <C-T> <C-W><C-K>
 nmap <C-N> <C-W><C-J>
-nmap <C-S> <C-W><C-L>
+nmap <C-L> <C-W><C-L>
 
 "No help
 " nmap <F1> <ESC>
@@ -159,7 +159,7 @@ let html_no_rendering=1   " Don't render HTML in vim
 set lazyredraw
 
 " The Silver Searcher
-nnoremap \ :Ag<SPACE>
+nnoremap \ :Ag --hidden<SPACE>
 
 " vim-mix-format
 let g:mix_format_on_save = 1
@@ -192,6 +192,7 @@ endif
 set updatetime=100
 
 " fzf
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 map <Leader>i :Files<CR>
 
 " rust.vim
@@ -212,3 +213,8 @@ nmap <Leader>tv :AV<CR>
 " vim-test
 nmap <Leader>tn :TestNearest<CR>
 nmap <Leader>tf :TestFile<CR>
+
+" Ultisnip
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
