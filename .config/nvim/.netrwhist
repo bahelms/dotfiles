@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/Users/barretthelms/.config'
-let g:netrw_dirhist_2='/Users/barretthelms/.config/nvim'
-let g:netrw_dirhist_1='/Users/barretthelms/.config'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/barretthelms/languages/elixir/chess_crunch/test/chess_crunch'
+let g:netrw_dirhist_6='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch'
+let g:netrw_dirhist_5='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch/cycles'
+let g:netrw_dirhist_4='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch'
+let g:netrw_dirhist_3='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch/drills'
+let g:netrw_dirhist_2='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch'
+let g:netrw_dirhist_1='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch/drills'
+let g:netrw_dirhist_0='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch/cycles'
+let g:netrw_dirhist_9='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch'
+let g:netrw_dirhist_8='/Users/barretthelms/languages/elixir/chess_crunch/lib/chess_crunch/sets'

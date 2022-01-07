@@ -19,7 +19,6 @@ Plug 'honza/vim-snippets' " snippets to be used by an engine
 Plug 'wesQ3/vim-windowswap'
 Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-mix-format'
-" Plug 'ruanyl/vim-fixmyjs'  " automatically fix JS with eslint
 Plug 'rakr/vim-one'  " colorscheme
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'prettier/vim-prettier', {
@@ -184,20 +183,12 @@ let g:go_highlight_interfaces = 0
 let g:go_highlight_operators = 0
 let g:go_doc_keywordprg_enabled = 0
 
-" emmet-vim
-" <C-y> then ,
-" let g:user_emmet_leader_key = '<c-e>'
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-
 " Prettier
 if filereadable('.prettierconfig') || filereadable('.prettierrc')
-  let g:prettier#quickfix_enabled = 0
-  let g:prettier#autoformat = 0
-  autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx,*.css,*.scss,*.json,*.md,*.yaml PrettierAsync
+  let g:prettier#quickfix_enabled = 1
+  let g:prettier#autoformat = 1
+  let g:prettier#config#tab_width = 2
+  autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx,*.css,*.scss,*.json,*.yaml PrettierAsync
 endif
 
 " gitgutter
