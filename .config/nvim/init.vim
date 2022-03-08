@@ -22,8 +22,7 @@ Plug 'mhinz/vim-mix-format'
 Plug 'rakr/vim-one'  " colorscheme
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-       \ 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'html', 'yaml', 'markdown'] }
+      \ 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'airblade/vim-gitgutter' "show Git changes in gutter
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug '/usr/local/opt/fzf'
@@ -44,6 +43,8 @@ set backspace=0
 set shell=bash
 set encoding=utf-8
 set title
+
+set fileformats=unix
 
 " Detect external file changes
 au FocusGained,VimResume * :checktime
