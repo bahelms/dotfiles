@@ -18,7 +18,6 @@ Plug 'SirVer/ultisnips' " snippet engine but no snippets
 Plug 'honza/vim-snippets' " snippets to be used by an engine
 Plug 'wesQ3/vim-windowswap'
 Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-mix-format'
 Plug 'rakr/vim-one'  " colorscheme
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'prettier/vim-prettier', {
@@ -175,7 +174,7 @@ command! -bang -nargs=* Ag
       \ )
 
 " vim-mix-format
-let g:mix_format_on_save = 1
+" let g:mix_format_on_save = 1
 
 " vim-go
 let g:go_fmt_command = 'goimports'
@@ -208,7 +207,8 @@ let g:rustfmt_autosave = 1
 " imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " ale
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
+" let g:ale_fixers = { 'elixir': ['mix_format'] }
 
 " projectionist
 nmap <Leader>tt :A<CR>
