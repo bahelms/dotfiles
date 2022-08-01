@@ -28,7 +28,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler docker-compose)
+plugins=(git bundler docker-compose asdf)
 
 # User configuration
 
@@ -101,10 +101,6 @@ function fnv {
 alias git-clean='git branch --merged | grep -Ev "(^\*|master|dev)" | xargs git branch -d && git remote prune origin'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-# . /usr/local/opt/asdf/libexec/asdf.sh
 
 # Todoist
 alias tl='todoist --color --indent'
