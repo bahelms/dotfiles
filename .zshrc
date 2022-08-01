@@ -10,41 +10,19 @@ fi
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="af-magic"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# ZSH_THEME="af-magic"
+ZSH_THEME="crunch"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -54,12 +32,13 @@ plugins=(git bundler docker-compose)
 
 # User configuration
 
-export GOPATH="/Users/jimbonk/languages/go"
+export GOPATH="/Users/barretthelms/languages/go"
 export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/jimbonk/apache-storm-1.0.1/bin:/Users/jimbonk/apache-maven-3.3.9/bin:/Users/jimbonk/noaa_weather:/Users/jimbonk/.cargo/bin:/Users/jimbonk/languages/dart/flutter/bin:$GOPATH/bin"
+export PATH="/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/barretthelms/apache-storm-1.0.1/bin:/Users/barretthelms/apache-maven-3.3.9/bin:/Users/barretthelms/noaa_weather:/Users/barretthelms/.cargo/bin:/Users/barretthelms/languages/dart/flutter/bin:$GOPATH/bin"
 export FZF_DEFAULT_COMMAND='rg --files'
 
 source $ZSH/oh-my-zsh.sh
+source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
 
 preexec() { print "" } # runs before command is executed
 # precmd() { print "" }  # runs before prompt is displayed
@@ -77,9 +56,6 @@ preexec() { print "" } # runs before command is executed
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -88,12 +64,13 @@ preexec() { print "" } # runs before command is executed
 # $(dinghy shellinit)
 #
 # Aliases
-alias ls.="ls -alhG"
 alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
 alias glg="git lg"
 alias nv="nvim"
+alias lg="lazygit"
+alias py="python3"
 
 # added by travis gem
 [ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
@@ -104,7 +81,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.3 python'
 alias scl='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app flangelier/scala:latest scala'
 alias drb='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app ruby:latest irb'
-alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:1.7.1 iex'
+alias dex='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app elixir:latest iex'
 alias neo='docker run --rm -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j:latest'
 alias dps='docker ps -a --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.CreatedAt}}"'
 
@@ -116,4 +93,51 @@ alias grun='java org.antlr.v4.gui.TestRig'
 alias reindex='sudo mdutil -E /'
 
 # Find file with FZF and open in neovim
-alias fnv='nv $(fzf)'
+function fnv { 
+  nv $(fzf -q $1) 
+}
+
+# Git
+alias git-clean='git branch --merged | grep -Ev "(^\*|master|dev)" | xargs git branch -d && git remote prune origin'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+# . /usr/local/opt/asdf/libexec/asdf.sh
+
+# Todoist
+alias tl='todoist --color --indent'
+
+# SalesLoft
+export NPM_TOKEN=oO/T6PS7rOAzoIqrc/AHw63/Te0aWhf4O+L3F+pi2OnZ4BxdWdEL3s9iZHo3khAv
+source $HOME/.projectrc
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/barretthelms/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/barretthelms/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/barretthelms/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/barretthelms/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Tmuxinator
+export EDITOR="nvim"
+source ~/.bin/tmuxinator.zsh
+alias sl_start='~/sl-start.sh'
+
+# ctags
+alias ctags="`brew --prefix`/bin/ctags"
+source /Users/barretthelms/.projectrc
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# homebrew postgresql@12
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
+
+# ruby openssl issues
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+# Elixir
+# keep erl/iex history with 1mb
+export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+# view Erlang docs in iex
+export KERL_BUILD_DOCS="yes"
+alias mt='mix test'
