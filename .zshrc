@@ -110,7 +110,7 @@ alias git-clean='git branch --merged | grep -Ev "(^\*|master|dev)" | xargs git b
 alias tl='todoist --color --indent'
 
 # SalesLoft
-export NPM_TOKEN=oO/T6PS7rOAzoIqrc/AHw63/Te0aWhf4O+L3F+pi2OnZ4BxdWdEL3s9iZHo3khAv
+# export NPM_TOKEN=
 source $HOME/.projectrc
 
 # The next line updates PATH for the Google Cloud SDK.
