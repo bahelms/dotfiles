@@ -1,43 +1,5 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local fmt = string.format
-local pack_path = fn.stdpath("data") .. "/site/pack"
--- ensure a given plugin from github.com/<user>/<repo> is cloned in the pack/packer/start directory
-local function ensure(user, repo)
-  local install_path = fmt("%s/packer/start/%s", pack_path, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
-    execute(fmt("packadd %s", repo))
-  end
-end
-ensure("wbthomason", "packer.nvim") -- ensure the plugin manager is installed
-
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim' -- Packer itself
-
-  use 'tpope/vim-commentary' -- comments
-  use 'tpope/vim-fugitive' -- Git commands
-  use 'tpope/vim-projectionist'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-vinegar' -- file tree
-  use 'easymotion/vim-easymotion'
-  use 'sheerun/vim-polyglot'
-  use 'jiangmiao/auto-pairs'
-  use 'wesQ3/vim-windowswap'
-  use 'airblade/vim-gitgutter' --show Git changes in gutter
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
-  -- fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  use {'dracula/vim', as = 'dracula'} -- colorscheme
-end)
+require('plugins')
+require('lsp')
 
 vim.cmd([[
 filetype plugin indent on
@@ -99,8 +61,7 @@ au FileType go set softtabstop=4
 
 -- package config
 
+require('gitsigns').setup()
+
 -- rust.vim
 vim.g.rustfmt_autosave = 1
-
--- gitgutter
-vim.opt.updatetime = 100
