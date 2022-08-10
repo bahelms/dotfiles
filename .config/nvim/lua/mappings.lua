@@ -51,6 +51,7 @@ nmap("<leader><bs>", ":wa<cr>")
 nmap("<leader>v", "<c-w>v")
 nmap("<leader>l", "<c-w>s")
 nmap("<leader>h", ":noh<cr>")
+nmap("<leader>b", ":Telescope file_browser<cr>")
 
 -- home and end line in command mode
 cmap('<c-a>', '<home>')

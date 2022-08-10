@@ -27,13 +27,14 @@ require('packer').startup(function(use)
   use 'wesQ3/vim-windowswap'
   use 'lewis6991/gitsigns.nvim' -- show git changes in gutter, manage hunks
   use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    'iamcco/markdown-preview.nvim',
+    run = function() vim.fn['mkdp#util#install']() end,
   })
   use { -- fuzzy finder
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use 'nvim-telescope/telescope-file-browser.nvim'
   use {'dracula/vim', as = 'dracula'} -- colorscheme
 
   -- lsp - language server protocol
@@ -95,3 +96,20 @@ rt.setup({
     }
   },
 })
+
+require('telescope').setup({
+  pickers = {
+    find_files = {
+      -- search at buffer's location, not CWD
+      cwd = require('telescope.utils').buffer_dir()
+    }
+  },
+  extensions = {
+    file_browser = {
+      theme = "dropdown",
+      -- disables netrw and use telescope-file-browser in its place
+      -- hijack_netrw = true,
+    },
+  },
+})
+require("telescope").load_extension("file_browser")
