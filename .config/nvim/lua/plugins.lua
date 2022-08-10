@@ -51,6 +51,47 @@ require('packer').startup(function(use)
   use {'hrsh7th/vim-vsnip'}
   use {'hrsh7th/cmp-vsnip'}
 
+  use "folke/trouble.nvim" -- show lsp errors in buffer
+  use 'simrat39/rust-tools.nvim' -- rust lsp, etc.
+
   -- treesitter for syntax highlighting and more
-  -- use {'nvim-treesitter/nvim-treesitter'}
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter',
+  --   run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
+  -- }
 end)
+
+require('gitsigns').setup()
+require('trouble').setup({
+  icons = false,
+  fold_open = "v", -- icon used for open folds
+  fold_closed = ">", -- icon used for closed folds
+  indent_lines = false, -- add an indent guide below the fold icons
+  signs = {
+      -- icons / text used for a diagnostic
+      error = "error",
+      warning = "warn",
+      hint = "hint",
+      information = "info"
+  },
+  use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+})
+
+local rt = require('rust-tools')
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      -- vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      -- vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+    settings = {
+      ['rust-analyzer'] = {
+        checkOnSave = {
+          command = 'clippy'
+        }
+      }
+    }
+  },
+})

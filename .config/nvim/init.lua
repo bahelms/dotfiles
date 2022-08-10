@@ -61,7 +61,5 @@ au FileType go set softtabstop=4
 
 -- package config
 
-require('gitsigns').setup()
-
 -- rust.vim
 vim.g.rustfmt_autosave = 1
