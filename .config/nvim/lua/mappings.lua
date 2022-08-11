@@ -40,8 +40,9 @@ nmap("M", ",")
 nmap("m", ";")
 vmap("M", ",")
 vmap("m", ";")
-nmap(";", ":")
-vmap(";", ":")
+
+-- nmap(";", ":")
+-- vmap(";", ":")
 
 -- Leader shortcuts
 nmap("<leader>a", ":wa<cr>")

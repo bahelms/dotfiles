@@ -10,7 +10,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -29,7 +29,21 @@ require('lspconfig').elixirls.setup {
   capabilities = capabilities
 }
 
+require('lspconfig').clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 -- auto completion
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 local cmp = require('cmp')
 cmp.setup({
   snippet = {
@@ -37,15 +51,40 @@ cmp.setup({
       -- setting up snippet engine
       -- this is for vsnip, if you're using other
       -- snippet engine, please refer to the `nvim-cmp` guide
-      vim.fn["vsnip#anonymous"](args.body)
+      vim.fn["vsnip#anonymous"](args.body) -- for vsnip
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
   mapping = {
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+      -- if cmp.visible() then
+      --   cmp.select_next_item()
+      -- elseif vim.fn["vsnip#available"](1) == 1 then
+      --   feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      -- elseif has_words_before() then
+      --   cmp.complete()
+      -- else
+      --   fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      -- end
+    end, {"i", "s"}),
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
     { name = 'buffer' }
   })
 })

@@ -51,6 +51,7 @@ require('packer').startup(function(use)
   -- here I'm using vsnip which can load snippets in vscode format
   use {'hrsh7th/vim-vsnip'}
   use {'hrsh7th/cmp-vsnip'}
+  use 'rafamadriz/friendly-snippets'
 
   use "folke/trouble.nvim" -- show lsp errors in buffer
   use 'simrat39/rust-tools.nvim' -- rust lsp, etc.
@@ -101,7 +102,7 @@ require('telescope').setup({
   pickers = {
     find_files = {
       -- search at buffer's location, not CWD
-      cwd = require('telescope.utils').buffer_dir()
+      -- cwd = require('telescope.utils').buffer_dir()
     }
   },
   extensions = {
