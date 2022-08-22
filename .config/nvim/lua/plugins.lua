@@ -21,8 +21,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-vinegar' -- file tree
-  use 'easymotion/vim-easymotion'
   use 'sheerun/vim-polyglot'
+  use 'easymotion/vim-easymotion'
   use 'jiangmiao/auto-pairs'
   use 'wesQ3/vim-windowswap'
   use 'lewis6991/gitsigns.nvim' -- show git changes in gutter, manage hunks
@@ -57,10 +57,9 @@ require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim' -- rust lsp, etc.
 
   -- treesitter for syntax highlighting and more
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
-  -- }
+  use 'nvim-treesitter/nvim-treesitter'
+
+  use 'vim-test/vim-test'
 end)
 
 require('gitsigns').setup()
@@ -92,17 +91,29 @@ rt.setup({
       ['rust-analyzer'] = {
         checkOnSave = {
           command = 'clippy'
-        }
+        },
       }
     }
   },
+  tools = {
+    inlay_hints = {
+      -- auto = false,
+      only_current_line = true
+    }
+  }
 })
 
 require('telescope').setup({
   pickers = {
     find_files = {
+      hidden = true,
+      find_command = rg,
       -- search at buffer's location, not CWD
       -- cwd = require('telescope.utils').buffer_dir()
+    },
+    live_grep = {
+      hidden = true,
+      find_command = rg,
     }
   },
   extensions = {
@@ -113,4 +124,23 @@ require('telescope').setup({
     },
   },
 })
-require("telescope").load_extension("file_browser")
+require('telescope').load_extension('file_browser')
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {'cpp', 'rust', 'elixir', 'eex', 'go', 'html', 'lua', 'ruby', 'javascript', 'json', 'markdown', 'python', 'typescript', 'yaml', 'toml'},
+  sync_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = true }
+}
+
+-- vim-test
+vim.g['test#strategy'] = {
+  nearest = 'neovim',
+  file = 'neovim',
+  suite = 'basic',
+}
+
+

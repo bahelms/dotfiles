@@ -53,6 +53,7 @@ nmap("<leader>v", "<c-w>v")
 nmap("<leader>l", "<c-w>s")
 nmap("<leader>h", ":noh<cr>")
 nmap("<leader>b", ":Telescope file_browser<cr>")
+nmap("<leader>'", ":Trouble<cr>")
 
 -- home and end line in command mode
 cmap('<c-a>', '<home>')
@@ -71,3 +72,9 @@ nmap("<leader>tv", ":AV<cr>")
 nmap("<leader>i", ":Telescope find_files<cr>")
 nmap("<leader>u", ":Telescope grep_string<cr>")
 nmap("\\", ":Telescope live_grep<cr>")
+
+-- vim-test
+nmap("<leader>tn", ":TestNearest<cr>")
+nmap("<leader>tf", ":TestFile<cr>")
+nmap("<leader>ts", ":TestSuite<cr>")
+nmap("<leader>tl", ":TestLast<cr>")
