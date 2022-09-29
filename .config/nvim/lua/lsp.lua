@@ -98,3 +98,6 @@ autocmd BufWritePre * lua vim.lsp.buf.format()
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
+vim.lsp.handlers["textDocument/signature_help"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})

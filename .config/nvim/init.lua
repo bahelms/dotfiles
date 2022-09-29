@@ -1,10 +1,6 @@
 require('plugins')
 require('lsp')
 
--- vim.cmd([[
--- filetype plugin indent on
--- syntax enable
--- ]])
 vim.g.mapleader = " "
 
 require("mappings")

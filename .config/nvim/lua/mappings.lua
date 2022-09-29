@@ -26,7 +26,9 @@ end
 nmap("K", "i<cr><esc>") -- fast return
 nmap("H", "^")
 nmap("L", "$")
-imap("<c-\\>", "<esc>A")
+
+-- end of line in insert mode
+imap("<c-e>", "<esc>A")
 
 -- window nav for Dvorak
 nmap("<c-h>", "<c-w><c-h>")
