@@ -3,7 +3,7 @@
 -- here we're setting key mappings for hover documentation, goto definitions, goto references, etc
 -- you may set those key mappings based on your own preference
 local on_attach = function(client, bufnr)
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -19,7 +19,12 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = { 'tsserver', 'lua_ls', 'elixirls', 'gopls', 'clangd' }
+})
 
 -- LSP servers
 require('lspconfig').elixirls.setup {
@@ -34,11 +39,27 @@ require('lspconfig').clangd.setup {
   capabilities = capabilities
 }
 
+require('lspconfig').gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+require('lspconfig').lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+require('lspconfig').tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript" }
+}
+
 -- auto completion
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+-- local has_words_before = function()
+--   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
 
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -76,7 +97,7 @@ cmp.setup({
       -- else
       --   fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       -- end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
   },
   window = {
     completion = cmp.config.window.bordered(),

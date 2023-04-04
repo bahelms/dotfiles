@@ -17,21 +17,22 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.clipboard = 'unnamedplus' -- all yanks go to clipboard
 vim.opt.hlsearch = true
+vim.opt.scrolloff = 8
 vim.opt.guicursor = ''
 vim.opt.errorbells = false
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true -- multiples of shiftwidth to indent which removes offby1 indents
-vim.opt.laststatus = 2 -- always show status line
+vim.opt.laststatus = 2    -- always show status line
 
 -- visual
 vim.opt.termguicolors = true
 vim.opt.background = dark
-vim.opt.lazyredraw = true -- speedup
+vim.opt.lazyredraw = true   -- speedup
 vim.g.html_no_rendering = 1 -- don't render HTML in vim
 vim.opt.colorcolumn = '80'
-vim.cmd('colorscheme dracula')
+vim.cmd.colorscheme('catppuccin')
 vim.cmd.highlight('Search', 'guibg=#d665cf')
 vim.cmd.highlight('ColorColumn', 'ctermbg=235 guibg=#33334d')
 vim.cmd.highlight('Normal', 'guibg=none')
