@@ -1,3 +1,5 @@
+vim.opt.termguicolors = true
+
 require('plugins')
 require('lsp')
 
@@ -23,20 +25,10 @@ vim.opt.errorbells = false
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 2
-vim.opt.shiftround = true -- multiples of shiftwidth to indent which removes offby1 indents
-vim.opt.laststatus = 2    -- always show status line
-
--- visual
-vim.opt.termguicolors = true
-vim.opt.background = dark
+vim.opt.shiftround = true   -- multiples of shiftwidth to indent which removes offby1 indents
+vim.opt.laststatus = 2      -- always show status line
 vim.opt.lazyredraw = true   -- speedup
 vim.g.html_no_rendering = 1 -- don't render HTML in vim
-vim.opt.colorcolumn = '80'
-vim.cmd.colorscheme('catppuccin')
-vim.cmd.highlight('Search', 'guibg=#d665cf')
-vim.cmd.highlight('ColorColumn', 'ctermbg=235 guibg=#33334d')
-vim.cmd.highlight('Normal', 'guibg=none')
-vim.cmd.highlight('Normal', 'guifg=#d8d8d8')
 
 -- delete trailing whitespace
 vim.cmd('autocmd BufWritePre *.c,*.rs,*.lua,*.rb,*.js,*.es6,*.coffee,*.haml,*.cjsx,*.ex,*.exs,*.py :%s/\\s\\+$//e')

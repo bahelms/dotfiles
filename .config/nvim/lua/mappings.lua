@@ -36,6 +36,10 @@ nmap("<c-k>", "<c-w><c-k>")
 nmap("<c-j>", "<c-w><c-j>")
 nmap("<c-l>", "<c-w><c-l>")
 
+-- search stays in middle
+nmap("n", "nzzzv")
+nmap("N", "Nzzzv")
+
 -- inline find commands
 nmap("z", "m")
 nmap("M", ",")
@@ -56,7 +60,6 @@ nmap("<leader>l", "<c-w>s")
 nmap("<leader>h", ":noh<cr>")
 nmap("<leader>b", ":Telescope file_browser<cr>")
 nmap("<leader>'", ":Trouble<cr>")
-nmap("<leader>p", "\"0p")
 vmap("<leader>p", "\"0p")
 
 -- home and end line in command mode

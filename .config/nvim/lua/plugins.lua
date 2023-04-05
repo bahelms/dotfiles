@@ -13,19 +13,17 @@ end
 ensure("wbthomason", "packer.nvim") -- ensure the plugin manager is installed
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim' -- Packer itself
+  use 'wbthomason/packer.nvim'  -- Packer itself
 
-  use 'tpope/vim-commentary'   -- comments
-  use 'tpope/vim-fugitive'     -- Git commands
-  use 'tpope/vim-projectionist'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-vinegar' -- file tree
-  -- use 'sheerun/vim-polyglot'
-  -- use 'easymotion/vim-easymotion'
-  use 'ggandor/leap.nvim' -- easymotion replacement
-  use 'jiangmiao/auto-pairs'
-  use 'wesQ3/vim-windowswap'
+  use 'tpope/vim-commentary'    -- comments
+  use 'tpope/vim-fugitive'      -- Git commands
+  use 'tpope/vim-projectionist' -- jump to test file
+  use 'tpope/vim-repeat'        -- repeat package commands with .
+  use 'tpope/vim-surround'      -- add/change wrapping pair chars
+  use 'tpope/vim-vinegar'       -- file tree
+  use 'ggandor/leap.nvim'       -- easymotion replacement
+  use 'jiangmiao/auto-pairs'    -- auto add of closing pair char
+  use 'wesQ3/vim-windowswap'    -- moved panes around as targets
   use 'lewis6991/gitsigns.nvim' -- show git changes in gutter, manage hunks
   use({
     'iamcco/markdown-preview.nvim',
@@ -35,31 +33,40 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  use 'ThePrimeagen/harpoon'  -- quick jump to targeted files
+  use 'itchyny/lightline.vim' -- status line
 
   -- colorschemes
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use { 'dracula/vim', as = 'dracula' }
+  -- use { 'dracula/vim', as = 'dracula' }
   use { "catppuccin/nvim", as = "catppuccin" }
   use { "bluz71/vim-moonfly-colors", as = "moonfly" }
 
-  -- manages LSP servers
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
-  -- lsp - language server protocol
-  use { 'neovim/nvim-lspconfig' }
-  use { 'hrsh7th/nvim-cmp' } -- cmp framework for auto-completion support
+  -- LSP
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' }, -- Required
+      {
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      { 'williamboman/mason-lspconfig.nvim' },
 
-  -- install different completion source
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-
-  -- you need a snippet engine for snippet support
-  -- here I'm using vsnip which can load snippets in vscode format
-  use { 'hrsh7th/vim-vsnip' }
-  use { 'hrsh7th/cmp-vsnip' }
-  use 'rafamadriz/friendly-snippets'
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'L3MON4D3/LuaSnip' },     -- Required
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'rafamadriz/friendly-snippets' }, -- snippet loader
+    }
+  }
 
   use "folke/trouble.nvim"       -- show lsp errors in buffer
   use 'simrat39/rust-tools.nvim' -- rust lsp, etc.
@@ -87,15 +94,14 @@ require('trouble').setup({
   use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 })
 
-local rt = require('rust-tools')
-rt.setup({
+require('rust-tools').setup({
   server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      -- vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      -- vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
+    -- on_attach = function(_, bufnr)
+    --   -- Hover actions
+    --   -- vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+    --   -- Code action groups
+    --   -- vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    -- end,
     settings = {
       ['rust-analyzer'] = {
         checkOnSave = {
@@ -106,7 +112,6 @@ rt.setup({
   },
   tools = {
     inlay_hints = {
-      -- auto = false,
       only_current_line = true
     }
   }
@@ -147,12 +152,34 @@ require('nvim-treesitter.configs').setup {
 }
 
 require('catppuccin').setup({
-  flavour = 'mocha',
-  no_italic = false,
+  -- no_italic = false,
+  -- transparent_background = true,
   dim_inactive = {
     enabled = true,
     percentage = 0.0,
-  }
+  },
+  integrations = {
+    leap = true,
+    harpoon = true,
+  },
+  color_overrides = {
+    mocha = {
+      base = "#11111B", -- active pane
+      -- mantle = "#000000", -- inactive pane
+    },
+  },
+  highlight_overrides = {
+    mocha = function(C)
+      return {
+        -- StatusLine = { bg = 'white' }, -- active
+        -- StatusLineNC = { bg = 'white' }, -- inactive
+        -- TabLineSel = { bg = C.pink },
+        -- CmpBorder = { fg = C.surface2 },
+        -- Pmenu = { bg = C.none },
+        -- TelescopeBorder = { link = "FloatBorder" },
+      }
+    end,
+  },
 })
 
 -- vim-test
