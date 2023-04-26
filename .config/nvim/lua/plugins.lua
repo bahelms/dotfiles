@@ -64,7 +64,8 @@ require('packer').startup(function(use)
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
-      { 'rafamadriz/friendly-snippets' }, -- snippet loader
+      -- snippets
+      { 'rafamadriz/friendly-snippets' },
     }
   }
 

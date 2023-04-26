@@ -21,10 +21,13 @@ return {
   --   brightness = 0.2,
   -- },
   font = wezterm.font {
-    family = 'JetBrains Mono',
+    -- family = 'JetBrains Mono',
+    family = 'Hack',
+    -- family = 'Red Hat Mono',
     weight = 'Medium',
     harfbuzz_features = { 'liga=0', 'clig=0', 'calt=0' } -- disable ligatures
   },
   font_size = 17.0,
-  line_height = 0.9,
+  -- line_height = 0.9, JetBrains Mono
+  -- line_height = 0.9
 }
