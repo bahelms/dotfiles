@@ -76,6 +76,7 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   use 'vim-test/vim-test'
+  use 'vim-python/python-syntax'
 end)
 
 require('leap').add_default_mappings()
@@ -155,6 +156,7 @@ require('nvim-treesitter.configs').setup {
 require('catppuccin').setup({
   -- no_italic = false,
   -- transparent_background = true,
+  flavour = "mocha",
   dim_inactive = {
     enabled = true,
     percentage = 0.0,
