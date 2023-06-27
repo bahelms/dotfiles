@@ -2,7 +2,7 @@ vim.opt.background = dark
 vim.g.lightline = {
   colorscheme = 'catppuccin',
   active = {
-    left = { { 'mode', 'paste' }, { 'filename', 'readonly', 'modified' } },
+    left = { { 'mode', 'paste' }, { 'relativepath', 'readonly', 'modified' } },
     right = { { 'gitbranch', 'percent', 'fileencoding', 'filetype' } }
   },
   component_function = {
