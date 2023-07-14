@@ -43,6 +43,7 @@ require('packer').startup(function(use)
   use { "bluz71/vim-moonfly-colors", as = "moonfly" }
 
   -- LSP
+  use { 'rafamadriz/friendly-snippets' } -- snippets
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -60,12 +61,11 @@ require('packer').startup(function(use)
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'L3MON4D3/LuaSnip' },     -- Required
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'L3MON4D3/LuaSnip' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
-      -- snippets
-      { 'rafamadriz/friendly-snippets' },
     }
   }
 
