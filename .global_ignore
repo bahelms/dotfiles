@@ -6,3 +6,4 @@ codeship.aes
 .projections.json
 .DS_Store
 .byebug_history
+.irb_history
