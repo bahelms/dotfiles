@@ -14,18 +14,33 @@ lsp.on_attach(function(client, bufnr)
   --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   --   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+  -- Autoformat on save
+  local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }),
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
 end)
 
 lsp.ensure_installed({
   'tsserver', 'lua_ls', 'elixirls', 'gopls', 'clangd'
 })
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- LSP servers
 require('lspconfig').elixirls.setup {
   -- you have to manually specify the entrypoint cmd for elixir-ls
   cmd = { os.getenv('HOME') .. '/.elixir-ls/language_server.sh' },
   -- on_attach = on_attach,
-  -- capabilities = capabilities,
+  capabilities = capabilities,
 }
 
 lsp.setup()
@@ -47,17 +62,12 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
   },
   sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
-    { name = 'nvim_lsp' },
     { name = 'buffer' },
   })
 })
-
--- format on save
-vim.cmd([[
-autocmd BufWritePre * lua vim.lsp.buf.format()
-]])
 
 -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
