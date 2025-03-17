@@ -17,7 +17,7 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.ensure_installed({
-  'tsserver', 'lua_ls', 'elixirls', 'gopls', 'clangd'
+  'lua_ls', 'elixirls', 'gopls', 'clangd'
 })
 
 -- LSP servers
@@ -26,6 +26,12 @@ require('lspconfig').elixirls.setup {
   cmd = { os.getenv('HOME') .. '/.elixir-ls/language_server.sh' },
   -- on_attach = on_attach,
   -- capabilities = capabilities,
+}
+
+require('lspconfig').clangd.setup {
+  init_options = {
+    fallbackFlags = { '-std=c++20' }
+  }
 }
 
 lsp.setup()

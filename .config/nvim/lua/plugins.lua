@@ -73,7 +73,10 @@ require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim' -- rust lsp, etc.
 
   -- treesitter for syntax highlighting and more
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = require("nvim-treesitter.install").update()
+  }
 
   use 'vim-test/vim-test'
   use 'vim-python/python-syntax'

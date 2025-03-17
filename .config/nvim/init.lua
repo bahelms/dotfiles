@@ -9,7 +9,7 @@ require("mappings")
 
 vim.opt.swapfile = false
 vim.opt.compatible = false
-vim.opt.backspace = "0"
+vim.opt.backspace = nil
 vim.opt.encoding = "utf-8"
 vim.opt.title = true
 vim.opt.fileformats = 'unix'
