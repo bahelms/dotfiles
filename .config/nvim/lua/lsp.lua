@@ -14,18 +14,33 @@ lsp.on_attach(function(client, bufnr)
   --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   --   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+  -- format on save
+  local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }),
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
 end)
 
 lsp.ensure_installed({
-  'lua_ls', 'elixirls', 'gopls', 'clangd'
+  'lua_ls', 'elixirls', 'gopls', 'clangd', 'ruff'
 })
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- LSP servers
 require('lspconfig').elixirls.setup {
   -- you have to manually specify the entrypoint cmd for elixir-ls
   cmd = { os.getenv('HOME') .. '/.elixir-ls/language_server.sh' },
   -- on_attach = on_attach,
-  -- capabilities = capabilities,
+  capabilities = capabilities,
 }
 
 require('lspconfig').clangd.setup {

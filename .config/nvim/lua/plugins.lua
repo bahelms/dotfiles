@@ -75,7 +75,7 @@ require('packer').startup(function(use)
   -- treesitter for syntax highlighting and more
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = require("nvim-treesitter.install").update()
+    run = function() require("nvim-treesitter.install").update({ with_sync = true }) end
   }
 
   use 'vim-test/vim-test'

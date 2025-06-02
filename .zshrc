@@ -6,8 +6,6 @@ then
   source $HOME/.custom_env_vars
 fi
 
-. /opt/asdf-vm/asdf.sh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -43,28 +41,7 @@ source $ZSH/oh-my-zsh.sh
 # source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
 
 preexec() { print "" } # runs before command is executed
-# precmd() { print "" }  # runs before prompt is displayed
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# $(dinghy shellinit)
-#
 # Aliases
 alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
@@ -73,14 +50,6 @@ alias glg="glods"
 alias nv="nvim"
 alias lg="lazygit"
 alias py="python3"
-
-# For Manjaro
-alias open="xdg-open"
-
-# added by travis gem
-[ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Docker app shortcuts
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.3 python'
@@ -138,19 +107,16 @@ export NVM_DIR="$HOME/.nvm"
 # Github GPG
 export GPG_TTY=$(tty)
 
-# startup greetings
-~/bin/greetings Jimbonk
-
 # asdf-vm
 # toAdd="$ASDF_DIR/shims:$ASDF_DIR/bin"
 # toRemove="$toAdd:"
 # export PATH=${PATH#$toRemove}:$toAdd
-# export PATH=~/.local/bin:$PATH
 
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 # fly.io
-export FLYCTL_INSTALL="/home/jb/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+# export FLYCTL_INSTALL="/home/jb/.fly"
+# export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 alias tt="$HOME/bin/time_tracker"
