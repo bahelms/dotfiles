@@ -32,50 +32,24 @@ plugins=(git bundler docker-compose asdf)
 
 # User configuration
 
-export GOPATH="/Users/barretthelms/languages/go"
+export GOPATH="$HOME/local/go"
 export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
-export PATH="/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:/Users/barretthelms/apache-storm-1.0.1/bin:/Users/barretthelms/apache-maven-3.3.9/bin:/Users/barretthelms/noaa_weather:/Users/barretthelms/.cargo/bin:/Users/barretthelms/languages/dart/flutter/bin:$GOPATH/bin"
+export PATH="/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/.cargo/bin:/usr/local/go/bin:$GOPATH/bin"
 export FZF_DEFAULT_COMMAND='rg --files'
 
 source $ZSH/oh-my-zsh.sh
-source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
+# source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
 
 preexec() { print "" } # runs before command is executed
-# precmd() { print "" }  # runs before prompt is displayed
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# $(dinghy shellinit)
-#
 # Aliases
 alias drc="docker ps -aqf status=exited | xargs docker rm -v"
 alias dri="docker images -qf dangling=true | xargs docker rmi"
 alias dcp="docker-compose"
-alias glg="git lg"
+alias glg="glods"
 alias nv="nvim"
 alias lg="lazygit"
 alias py="python3"
-
-# added by travis gem
-[ -f /Users/barretthelms/.travis/travis.sh ] && source /Users/barretthelms/.travis/travis.sh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Docker app shortcuts
 alias dpy='docker run -it --rm -v $(pwd):/usr/src/app -w /usr/src/app python:3.6.3 python'
@@ -102,12 +76,6 @@ alias git-clean='git branch --merged | grep -Ev "(^\*|master|dev)" | xargs git b
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Todoist
-alias tl='todoist --color --indent'
-
-# SalesLoft
-# export NPM_TOKEN=
-source $HOME/.projectrc
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/barretthelms/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/barretthelms/google-cloud-sdk/path.zsh.inc'; fi
@@ -117,19 +85,13 @@ if [ -f '/Users/barretthelms/google-cloud-sdk/completion.zsh.inc' ]; then . '/Us
 
 # Tmuxinator
 export EDITOR="nvim"
-source ~/.bin/tmuxinator.zsh
-alias sl_start='~/sl-start.sh'
 
 # ctags
-alias ctags="`brew --prefix`/bin/ctags"
-source /Users/barretthelms/.projectrc
+# alias ctags="`brew --prefix`/bin/ctags"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-# homebrew postgresql@12
-export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
-
 # ruby openssl issues
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Elixir
 # keep erl/iex history with 1mb
@@ -137,3 +99,24 @@ export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_byte
 # view Erlang docs in iex
 export KERL_BUILD_DOCS="yes"
 alias mt='mix test'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Github GPG
+export GPG_TTY=$(tty)
+
+# asdf-vm
+# toAdd="$ASDF_DIR/shims:$ASDF_DIR/bin"
+# toRemove="$toAdd:"
+# export PATH=${PATH#$toRemove}:$toAdd
+
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(zoxide init zsh)"
+
+# fly.io
+# export FLYCTL_INSTALL="/home/jb/.fly"
+# export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+alias tt="$HOME/bin/time_tracker"

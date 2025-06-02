@@ -3,7 +3,7 @@ vim.g.lightline = {
   colorscheme = 'catppuccin',
   active = {
     left = { { 'mode', 'paste' }, { 'relativepath', 'readonly', 'modified' } },
-    right = { { 'gitbranch', 'percent', 'fileencoding', 'filetype' } }
+    right = { { 'gitbranch', 'percent', 'fileencoding', 'filetype', 'lineinfo' } }
   },
   component_function = {
     gitbranch = 'FugitiveHead'
