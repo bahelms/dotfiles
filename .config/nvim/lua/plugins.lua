@@ -22,8 +22,14 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'      -- add/change wrapping pair chars
   use 'tpope/vim-vinegar'       -- file tree
   use 'ggandor/leap.nvim'       -- easymotion replacement
-  use 'jiangmiao/auto-pairs'    -- auto add of closing pair char
+  use {                         -- auto add of closing pair char
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup({})
+    end
+  }
   use 'wesQ3/vim-windowswap'    -- moved panes around as targets
+
   use 'lewis6991/gitsigns.nvim' -- show git changes in gutter, manage hunks
   use({
     'iamcco/markdown-preview.nvim',
@@ -46,7 +52,7 @@ require('packer').startup(function(use)
   use { 'rafamadriz/friendly-snippets' } -- snippets
   use {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' }, -- Required
@@ -69,8 +75,8 @@ require('packer').startup(function(use)
     }
   }
 
-  use "folke/trouble.nvim"       -- show lsp errors in buffer
-  use 'simrat39/rust-tools.nvim' -- rust lsp, etc.
+  use "folke/trouble.nvim" -- show lsp errors in buffer
+  use 'mrcjkb/rustaceanvim'
 
   -- treesitter for syntax highlighting and more
   use {
@@ -97,29 +103,6 @@ require('trouble').setup({
     information = "info"
   },
   use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-})
-
-require('rust-tools').setup({
-  server = {
-    -- on_attach = function(_, bufnr)
-    --   -- Hover actions
-    --   -- vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-    --   -- Code action groups
-    --   -- vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    -- end,
-    settings = {
-      ['rust-analyzer'] = {
-        checkOnSave = {
-          command = 'clippy'
-        },
-      }
-    }
-  },
-  tools = {
-    inlay_hints = {
-      only_current_line = true
-    }
-  }
 })
 
 require('telescope').setup({

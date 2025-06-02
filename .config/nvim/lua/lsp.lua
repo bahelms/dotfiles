@@ -29,25 +29,36 @@ lsp.on_attach(function(client, bufnr)
   end
 end)
 
-lsp.ensure_installed({
-  'lua_ls', 'elixirls', 'gopls', 'clangd', 'ruff'
-})
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- LSP servers
-require('lspconfig').elixirls.setup {
-  -- you have to manually specify the entrypoint cmd for elixir-ls
-  cmd = { os.getenv('HOME') .. '/.elixir-ls/language_server.sh' },
-  -- on_attach = on_attach,
-  capabilities = capabilities,
-}
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  -- Replace the language servers listed here
+  -- with the ones you want to install
+  ensure_installed = { 'lua_ls', 'elixirls', 'clangd', 'ruff' },
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
 
-require('lspconfig').clangd.setup {
-  init_options = {
-    fallbackFlags = { '-std=c++20' }
-  }
-}
+    elixirls = function()
+      require('lspconfig').elixirls.setup {
+        -- you have to manually specify the entrypoint cmd for elixir-ls
+        cmd = { os.getenv('HOME') .. '/.elixir-ls/language_server.sh' },
+        -- on_attach = on_attach,
+        capabilities = capabilities,
+      }
+    end,
+
+    clangd = function()
+      require('lspconfig').clangd.setup {
+        init_options = {
+          fallbackFlags = { '-std=c++20' }
+        }
+      }
+    end,
+  },
+})
 
 lsp.setup()
 
