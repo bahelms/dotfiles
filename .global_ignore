@@ -7,3 +7,5 @@ codeship.aes
 .DS_Store
 .byebug_history
 .irb_history
+.cursorrules
+.cursor

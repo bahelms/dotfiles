@@ -1,10 +1,12 @@
+vim.opt.termguicolors = true
+
+require('plugins')
+require('lsp')
+
 vim.g.mapleader = " "
 
-require('config.lazy')
-require('config.mappings')
--- require('lsp')
+require("mappings")
 
-vim.opt.termguicolors = true
 vim.opt.swapfile = false
 vim.opt.compatible = false
 vim.opt.backspace = nil
@@ -25,7 +27,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true   -- multiples of shiftwidth to indent which removes offby1 indents
 vim.opt.laststatus = 2      -- always show status line
--- vim.opt.lazyredraw = true   -- speedup
+vim.opt.lazyredraw = true   -- speedup
 vim.g.html_no_rendering = 1 -- don't render HTML in vim
 
 -- delete trailing whitespace

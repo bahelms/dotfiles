@@ -33,12 +33,13 @@ plugins=(git bundler docker-compose asdf)
 # User configuration
 
 export GOPATH="$HOME/local/go"
-export CLASSPATH=".:/usr/local/lib/antlr-4.6-complete.jar:$CLASSPATH"
 export PATH="/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/.cargo/bin:/usr/local/go/bin:$GOPATH/bin"
 export FZF_DEFAULT_COMMAND='rg --files'
 
+# add psql to path
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
-# source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
 
 preexec() { print "" } # runs before command is executed
 
