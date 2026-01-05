@@ -13,7 +13,6 @@ return {
   },
   { 'vim-test/vim-test' },
   { 'lewis6991/gitsigns.nvim' }, -- show git changes in gutter, manage hunks
-  { 'ThePrimeagen/harpoon' },    -- quick jump to targeted files
 
   {
     "folke/noice.nvim",
@@ -28,7 +27,13 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       -- "rcarriga/nvim-notify",
-    }
+    },
+  },
+  -- install markdown-preview.nvim without yarn or npm
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = "markdown",
+    build = ":call mkdp#util#install()",
   }
 
 }

@@ -24,7 +24,7 @@ return {
         colorscheme = 'catppuccin',
         active = {
           left = { { 'mode', 'paste' }, { 'relativepath', 'readonly', 'modified' } },
-          right = { { 'gitbranch', 'percent', 'fileencoding', 'filetype', 'lineinfo' } }
+          right = { { 'lineinfo' } }
         },
         component_function = {
           gitbranch = 'FugitiveHead'

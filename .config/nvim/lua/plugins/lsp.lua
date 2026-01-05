@@ -57,20 +57,10 @@ return {
       -- Replace the language servers listed here
       -- with the ones you want to install
       ensure_installed = { 'lua_ls', 'clangd', 'ts_ls' },
-      -- ensure_installed = { 'lua_ls', 'elixirls', 'clangd', 'ruff' },
       handlers = {
         function(server_name)
           require('lspconfig')[server_name].setup({})
         end,
-
-        -- elixirls = function()
-        --   require('lspconfig').elixirls.setup {
-        --     -- you have to manually specify the entrypoint cmd for elixir-ls
-        --     cmd = { os.getenv('HOME') .. '/.elixir-ls/language_server.sh' },
-        --     -- on_attach = on_attach,
-        --     capabilities = capabilities,
-        --   }
-        -- end,
 
         clangd = function()
           require('lspconfig').clangd.setup {
@@ -106,6 +96,7 @@ return {
       })
     })
 
+    -- give popups borders
     local orig = vim.lsp.util.open_floating_preview
     ---@diagnostic disable-next-line: duplicate-set-field
     function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
