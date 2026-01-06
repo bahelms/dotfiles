@@ -1,0 +1,334 @@
+{
+    "window.commandCenter": true,
+    "editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "editor.lineHeight": 18,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "none",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorSurroundingLines": 8,
+    // "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorStyle": "block",
+    "editor.rulers": [
+        80
+    ],
+    "editor.scrollBeyondLastLine": true,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": "off",
+    "editor.foldingHighlight": false,
+    "editor.matchBrackets": "near",
+    "editor.guides.indentation": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "entity.name.function",
+                    "support.function",
+                    "meta.function",
+                    "variable.function"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.colorCustomizations": {
+        // "editor.wordHighlightBackground": "#ffff00",
+        // "tab.activeBackground": "#2525ce",
+        "editor.background": "#0d0d13c7",
+        // "editorGroupHeader.tabsBackground": "#33334d"
+    },
+    "elixirLS.suggestSpecs": false,
+    "vscode-elixir-test": {
+        "focusOnTerminalAfterTest": true,
+        "beforeTest": "clear",
+    },
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.insert": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.leader": "space",
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false
+    },
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "backspace"
+            ],
+            "commands": [
+                "workbench.action.files.saveAll",
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "s"
+            ],
+            "commands": [
+                "leap.search"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "i",
+                "<CR>",
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        // search stays in middle
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z",
+                "z",
+                "v"
+            ]
+        },
+        // search stays in middle
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z",
+                "z",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                "z"
+            ],
+            "after": [
+                "m"
+            ]
+        },
+        {
+            "before": [
+                "M"
+            ],
+            "after": [
+                ","
+            ]
+        },
+        {
+            "before": [
+                "m"
+            ],
+            "after": [
+                ";"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.files.saveAll"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "x"
+            ],
+            "commands": [
+                "workbench.action.closeAllEditors"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v"
+            ],
+            "commands": [
+                "workbench.action.splitEditorRight"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.splitEditorDown"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "i"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "\\"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "commands": [
+                "workbench.action.focusLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "commands": [
+                "workbench.action.focusBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "commands": [
+                "workbench.action.focusAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                "workbench.action.focusRightGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "n"
+            ],
+            "commands": [
+                "extension.elixirRunTestAtCursor"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "t",
+                "t"
+            ],
+            "commands": [
+                "extension.elixirJumpToTest"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "t",
+                "f"
+            ],
+            "commands": [
+                "extension.elixirRunTestFile"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "0",
+                "p"
+            ]
+        }
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "explorer.confirmDelete": false,
+    "[search-result]": {
+        "editor.lineNumbers": "relative"
+    },
+    "editor.lineNumbers": "relative",
+    "vim.smartRelativeLine": true,
+    "files.exclude": {
+        "**/_build": true
+    },
+    // "terminal.integrated.safeCommands": [
+    //     "npx eslint",
+    //     "npx tsc",
+    //     "npx eslint . --ext .ts,.tsx",
+    //     "npx tsc --noEmit --project ."
+    // ]
+}
